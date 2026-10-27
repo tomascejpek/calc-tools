@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calc-tools"
+version = "0.1.0"
+description = "Dependency-free JavaScript calculators and unit converters, packaged as Django static files."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Tomáš Cejpek" }]
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Framework :: Django",
+    "Programming Language :: JavaScript",
+    "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Homepage = "https://github.com/tomascejpek/calc-tools"
+
+[tool.setuptools]
+packages = ["calc_tools"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+calc_tools = ["static/calc_tools/**/*.js"]

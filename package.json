@@ -1,0 +1,27 @@
+{
+  "name": "calc-tools",
+  "version": "0.1.0",
+  "description": "Dependency-free calculators and unit converters (brewing and more) described as data, ready to render as forms.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Tomáš Cejpek",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomascejpek/calc-tools.git"
+  },
+  "exports": {
+    ".": "./calc_tools/static/calc_tools/index.js",
+    "./core/*": "./calc_tools/static/calc_tools/core/*",
+    "./tools/*": "./calc_tools/static/calc_tools/tools/*"
+  },
+  "files": [
+    "calc_tools/static/calc_tools"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

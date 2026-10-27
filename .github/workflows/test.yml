@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: pip install includes the static files
+        run: |
+          python -m venv /tmp/venv
+          /tmp/venv/bin/pip install .
+          cd /tmp && /tmp/venv/bin/python -c "import calc_tools, pathlib; root = pathlib.Path(calc_tools.__file__).parent / 'static/calc_tools'; assert (root / 'index.js').is_file(); assert len(list(root.rglob('*.js'))) > 10"
