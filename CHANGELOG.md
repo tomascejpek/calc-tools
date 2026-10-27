@@ -3,6 +3,18 @@
 All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] – 2026-10-27
+
+### Fixed
+
+- Pressure converter rejects values below a full vacuum (−1 atm gauge).
+- Demo page no longer requests a missing favicon.
+
+### Changed
+
+- Every tool has at least three separate tests, including zero and
+  out-of-range input.
+
 ## [0.1.1] – 2026-10-27
 
 ### Fixed

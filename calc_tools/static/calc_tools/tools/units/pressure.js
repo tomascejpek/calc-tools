@@ -19,18 +19,19 @@ export default {
   tags: [],
   name: { cs: 'Převod tlaku', en: 'Pressure converter' },
   description: {
-    cs: 'Převod tlaku mezi bary, kilopascaly, psi a fyzikálními atmosférami. Hodí se např. pro tlak v sudu a na redukčním ventilu.',
-    en: 'Converts pressure between bar, kilopascals, psi and standard atmospheres, e.g. for keg and regulator pressure.',
+    cs: 'Převod tlaku mezi bary, kilopascaly, psi a fyzikálními atmosférami. Hodí se např. pro tlak v sudu a na redukčním ventilu. Záporná hodnota znamená podtlak, nejvýš do úplného vakua.',
+    en: 'Converts pressure between bar, kilopascals, psi and standard atmospheres, e.g. for keg and regulator pressure. A negative value is a vacuum gauge reading, down to a full vacuum.',
   },
   keywords: {
     cs: ['tlak', 'bar', 'kilopascal', 'psi', 'atmosféra', 'redukční ventil', 'sud'],
     en: ['pressure', 'bar', 'kpa', 'psi', 'atmosphere', 'regulator', 'keg'],
   },
   units: [
-    { id: 'bar', default: 1, label: { cs: 'bar', en: 'bar' }, precision: 2 },
-    { id: 'kpa', label: { cs: 'kPa', en: 'kPa' }, precision: 1 },
-    { id: 'psi', label: { cs: 'psi', en: 'psi' }, precision: 1 },
-    { id: 'atm', label: { cs: 'atm', en: 'atm' }, precision: 3 },
+    // Negative values are gauge pressure below atmospheric, down to a full vacuum
+    { id: 'bar', default: 1, label: { cs: 'bar', en: 'bar' }, precision: 2, min: -KILOPASCALS.atm / KILOPASCALS.bar },
+    { id: 'kpa', label: { cs: 'kPa', en: 'kPa' }, precision: 1, min: -KILOPASCALS.atm },
+    { id: 'psi', label: { cs: 'psi', en: 'psi' }, precision: 1, min: -KILOPASCALS.atm / KILOPASCALS.psi },
+    { id: 'atm', label: { cs: 'atm', en: 'atm' }, precision: 3, min: -1 },
   ],
   ...factorConversion(KILOPASCALS),
   references: [

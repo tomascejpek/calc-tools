@@ -1,6 +1,6 @@
 {
   "name": "calc-tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Dependency-free calculators and unit converters (brewing and more) described as data, ready to render as forms.",
   "type": "module",
   "license": "MIT",
