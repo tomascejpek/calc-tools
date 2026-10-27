@@ -45,14 +45,14 @@ const inputs = [
     ],
   },
   { id: 'temperature', type: 'number', default: 4, min: -2, max: 30, step: 0.5, unit: '°C', label: { cs: 'Teplota piva', en: 'Beer temperature' } },
-  { id: 'volumes', type: 'number', default: 2.5, min: 0, max: 5, step: 0.1, unit: 'obj. CO₂', label: { cs: 'Nasycení', en: 'Carbonation' } },
+  { id: 'volumes', type: 'number', default: 2.5, min: 0, max: 5, step: 0.1, unit: { cs: 'obj. CO₂', en: 'vol. CO₂' }, label: { cs: 'Nasycení', en: 'Carbonation' } },
   { id: 'pressure', type: 'number', default: 0.8, min: 0, max: 7, step: 0.05, unit: 'bar', label: { cs: 'Přetlak', en: 'Gauge pressure' } },
 ];
 
 const outputs = [
   { id: 'pressureBar', label: { cs: 'Přetlak', en: 'Gauge pressure' }, unit: 'bar', precision: 2 },
   { id: 'pressurePsi', label: { cs: 'Přetlak', en: 'Gauge pressure' }, unit: 'psi', precision: 1 },
-  { id: 'volumes', label: { cs: 'Nasycení', en: 'Carbonation' }, unit: 'obj. CO₂', precision: 2 },
+  { id: 'volumes', label: { cs: 'Nasycení', en: 'Carbonation' }, unit: { cs: 'obj. CO₂', en: 'vol. CO₂' }, precision: 2 },
 ];
 
 export default {

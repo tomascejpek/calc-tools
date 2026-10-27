@@ -9,7 +9,7 @@ export { ethanolGrams };
 
 const inputs = [
   { id: 'volume', type: 'number', default: 500, min: 0, max: 100000, step: 10, unit: 'ml', label: { cs: 'Objem nápoje', en: 'Drink volume' } },
-  { id: 'abv', type: 'number', default: 5, min: 0, max: 100, step: 0.1, unit: '% obj.', label: { cs: 'Obsah alkoholu', en: 'Alcohol by volume' } },
+  { id: 'abv', type: 'number', default: 5, min: 0, max: 100, step: 0.1, unit: { cs: '% obj.', en: '% ABV' }, label: { cs: 'Obsah alkoholu', en: 'Alcohol by volume' } },
 ];
 
 const outputs = [

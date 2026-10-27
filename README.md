@@ -36,7 +36,8 @@ localize(getTool('ibu').name, 'cs'); // 'Hořkost (IBU)'
 
 Numbers come back as `number` (or `null` when the input is invalid or out of
 range; `warnings` then says why, in `cs` and `en`). Rounding to `precision`
-and the decimal comma are up to the UI. Inputs may be numbers or strings with a
+and the decimal comma are up to the UI. A `unit` is either a plain string
+(`'SG'`, `'g'`) or a text per language; `localize(unit, lang)` handles both. Inputs may be numbers or strings with a
 decimal comma or dot.
 
 The pure formulas are exported too, e.g. `sgToPlato` from `core/units.js`
@@ -46,7 +47,7 @@ or `tinsethIbu` from `tools/beer/ibu.js`.
 
 ```
 # requirements.txt
-calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@v0.1.0
+calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@0.1.1
 ```
 
 ```python
@@ -102,7 +103,7 @@ export default {
     { id: 'hops', type: 'list', label, min: 1, max: 10, fields: [/* inputs */] },
   ],
   outputs: [
-    { id: 'abv', label, unit: '% obj.', precision: 1 },
+    { id: 'abv', label, unit: { cs: '% obj.', en: '% ABV' }, precision: 1 }, // or a plain string such as 'SG'
     { id: 'additions', type: 'list', label, unit: 'IBU', precision: 1 }, // array of numbers
   ],
   compute(values) { return { values: {}, warnings: [] }; },

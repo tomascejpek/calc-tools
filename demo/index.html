@@ -74,6 +74,7 @@ function control(input, value, onChange) {
 }
 
 function labelled(text, unit, node) {
+  unit = localize(unit, lang);
   return el('label', { class: 'field' }, el('span', {}, text + (unit ? ` (${unit})` : '')), node);
 }
 
@@ -114,7 +115,7 @@ function renderCalculator(tool, body) {
     outputs.replaceChildren(...tool.outputs.flatMap((output) => {
       const value = result.values[output.id];
       const label = localize(output.label, lang);
-      const row = (text, number) => el('div', { class: 'out' }, el('span', {}, text), el('b', {}, `${format(number, output.precision)} ${output.unit ?? ''}`));
+      const row = (text, number) => el('div', { class: 'out' }, el('span', {}, text), el('b', {}, `${format(number, output.precision)} ${localize(output.unit, lang)}`));
       return Array.isArray(value) ? value.map((item, index) => row(`${label} ${index + 1}`, item)) : [row(label, value)];
     }));
     warnings(warn, result.warnings);

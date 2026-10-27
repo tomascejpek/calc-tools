@@ -40,7 +40,7 @@ export function primingSugarPerLitre(targetVolumes, celsius, sugar = 'sucrose') 
 }
 
 const inputs = [
-  { id: 'volumes', type: 'number', default: 2.5, min: 0, max: 6, step: 0.1, unit: 'obj. CO₂', label: { cs: 'Cílové nasycení', en: 'Target carbonation' } },
+  { id: 'volumes', type: 'number', default: 2.5, min: 0, max: 6, step: 0.1, unit: { cs: 'obj. CO₂', en: 'vol. CO₂' }, label: { cs: 'Cílové nasycení', en: 'Target carbonation' } },
   { id: 'beer', type: 'number', default: 20, min: 0, max: 100000, step: 0.5, unit: 'l', label: { cs: 'Objem piva', en: 'Beer volume' } },
   { id: 'temperature', type: 'number', default: 18, min: -2, max: 35, step: 0.5, unit: '°C', label: { cs: 'Nejvyšší teplota piva po kvašení', en: 'Highest beer temperature after fermentation' } },
   {
@@ -57,7 +57,7 @@ const inputs = [
 const outputs = [
   { id: 'total', label: { cs: 'Cukr celkem', en: 'Total sugar' }, unit: 'g', precision: 0 },
   { id: 'perLitre', label: { cs: 'Cukr na litr', en: 'Sugar per litre' }, unit: 'g/l', precision: 1 },
-  { id: 'residual', label: { cs: 'Zbytkový CO₂ v pivu', en: 'Residual CO₂ in beer' }, unit: 'obj. CO₂', precision: 2 },
+  { id: 'residual', label: { cs: 'Zbytkový CO₂ v pivu', en: 'Residual CO₂ in beer' }, unit: { cs: 'obj. CO₂', en: 'vol. CO₂' }, precision: 2 },
 ];
 
 export default {

@@ -147,3 +147,12 @@ test('calculate never throws', () => {
   invalid(calculate(broken, {}));
   near(calculate(abv, null).values.abv, 5.25, 1e-9);
 });
+
+test('units and warnings are localised', () => {
+  const unit = abv.outputs.find((output) => output.id === 'abv').unit;
+  assert.deepEqual(unit, { cs: '% obj.', en: '% ABV' });
+  const [warning] = kegCarbonation.compute({ volumes: 9 }).warnings;
+  assert.match(warning.cs, /obj\. CO₂/);
+  assert.match(warning.en, /vol\. CO₂/);
+  assert.doesNotMatch(warning.en, /obj\./);
+});

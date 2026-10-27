@@ -40,7 +40,7 @@ const inputs = [
 ];
 
 const outputs = [
-  { id: 'abv', label: { cs: 'Odhad alkoholu', en: 'Estimated alcohol' }, unit: '% obj.', precision: 1 },
+  { id: 'abv', label: { cs: 'Odhad alkoholu', en: 'Estimated alcohol' }, unit: { cs: '% obj.', en: '% ABV' }, precision: 1 },
   { id: 'attenuation', label: { cs: 'Použité prokvašení', en: 'Attenuation used' }, unit: '%', precision: 0 },
   { id: 'og', label: { cs: 'Původní hustota', en: 'Original gravity' }, unit: 'SG', precision: 3 },
   { id: 'fg', label: { cs: 'Konečná hustota', en: 'Final gravity' }, unit: 'SG', precision: 3 },

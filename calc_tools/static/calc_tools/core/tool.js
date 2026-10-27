@@ -4,6 +4,7 @@
  * @module core/tool
  */
 
+import { localize } from './i18n.js';
 import { isNumber, parseNumber } from './units.js';
 
 /** @typedef {import('./i18n.js').Text} Text */
@@ -13,7 +14,7 @@ import { isNumber, parseNumber } from './units.js';
  * @property {string} id
  * @property {'number' | 'select' | 'list'} [type] defaults to 'number'
  * @property {Text} label
- * @property {string} [unit]
+ * @property {string | Text} [unit] a plain string or a text per language
  * @property {number | string} [default]
  * @property {number} [min]
  * @property {number} [max]
@@ -27,7 +28,7 @@ import { isNumber, parseNumber } from './units.js';
  * @typedef {object} Output
  * @property {string} id
  * @property {Text} label
- * @property {string} [unit]
+ * @property {string | Text} [unit] a plain string or a text per language
  * @property {number} [precision]
  * @property {'number' | 'list'} [type] 'list' outputs an array of numbers
  */
@@ -145,26 +146,27 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
  * @param {Text} label
  * @param {number | undefined} min
  * @param {number | undefined} max
- * @param {string} [unit]
+ * @param {string | Text} [unit]
  * @returns {Text}
  */
 export function rangeWarning(label, min, max, unit) {
-  const suffix = unit ? ` ${unit}` : '';
+  const cs = unit ? ` ${localize(unit, 'cs')}` : '';
+  const en = unit ? ` ${localize(unit, 'en')}` : '';
   if (isNumber(min) && isNumber(max)) {
     return {
-      cs: `${label.cs}: hodnota musí být od ${show(min, 'cs')} do ${show(max, 'cs')}${suffix}.`,
-      en: `${label.en}: the value must be between ${show(min, 'en')} and ${show(max, 'en')}${suffix}.`,
+      cs: `${label.cs}: hodnota musí být od ${show(min, 'cs')} do ${show(max, 'cs')}${cs}.`,
+      en: `${label.en}: the value must be between ${show(min, 'en')} and ${show(max, 'en')}${en}.`,
     };
   }
   if (isNumber(min)) {
     return {
-      cs: `${label.cs}: hodnota musí být aspoň ${show(min, 'cs')}${suffix}.`,
-      en: `${label.en}: the value must be at least ${show(min, 'en')}${suffix}.`,
+      cs: `${label.cs}: hodnota musí být aspoň ${show(min, 'cs')}${cs}.`,
+      en: `${label.en}: the value must be at least ${show(min, 'en')}${en}.`,
     };
   }
   return {
-    cs: `${label.cs}: hodnota může být nejvýš ${show(/** @type {number} */ (max), 'cs')}${suffix}.`,
-    en: `${label.en}: the value must be at most ${show(/** @type {number} */ (max), 'en')}${suffix}.`,
+    cs: `${label.cs}: hodnota může být nejvýš ${show(/** @type {number} */ (max), 'cs')}${cs}.`,
+    en: `${label.en}: the value must be at most ${show(/** @type {number} */ (max), 'en')}${en}.`,
   };
 }
 

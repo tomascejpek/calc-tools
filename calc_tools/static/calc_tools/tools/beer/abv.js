@@ -67,8 +67,8 @@ const inputs = [
 ];
 
 const outputs = [
-  { id: 'abv', label: { cs: 'Alkohol', en: 'Alcohol by volume' }, unit: '% obj.', precision: 1 },
-  { id: 'abw', label: { cs: 'Alkohol hmotnostně', en: 'Alcohol by weight' }, unit: '% hm.', precision: 1 },
+  { id: 'abv', label: { cs: 'Alkohol', en: 'Alcohol by volume' }, unit: { cs: '% obj.', en: '% ABV' }, precision: 1 },
+  { id: 'abw', label: { cs: 'Alkohol hmotnostně', en: 'Alcohol by weight' }, unit: { cs: '% hm.', en: '% ABW' }, precision: 1 },
   { id: 'apparentAttenuation', label: { cs: 'Zdánlivé prokvašení', en: 'Apparent attenuation' }, unit: '%', precision: 0 },
   { id: 'realAttenuation', label: { cs: 'Skutečné prokvašení', en: 'Real attenuation' }, unit: '%', precision: 0 },
   { id: 'realExtract', label: { cs: 'Skutečný extrakt', en: 'Real extract' }, unit: '°P', precision: 1 },

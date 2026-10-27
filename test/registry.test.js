@@ -32,12 +32,22 @@ test('tools are ordered by category', () => {
 });
 
 /**
+ * @param {any} unit
+ * @param {string} where
+ */
+function checkUnit(unit, where) {
+  if (unit === undefined || typeof unit === 'string') return;
+  bilingual(unit, `${where} unit`);
+}
+
+/**
  * @param {any[]} inputs
  * @param {string} where
  */
 function checkInputs(inputs, where) {
   for (const input of inputs) {
     bilingual(input.label, `${where} input ${input.id}`);
+    checkUnit(input.unit, `${where} input ${input.id}`);
     if (input.type === 'select') {
       assert.ok(input.options.some((/** @type {any} */ option) => option.value === input.default), `${where} ${input.id} default`);
       for (const option of input.options) bilingual(option.label, `${where} option ${option.value}`);
@@ -60,7 +70,10 @@ test('every tool has complete bilingual texts and references', () => {
       checkInputs(tool.params ?? [], tool.id);
     } else {
       checkInputs(tool.inputs, tool.id);
-      for (const output of tool.outputs) bilingual(output.label, `${tool.id} output ${output.id}`);
+      for (const output of tool.outputs) {
+        bilingual(output.label, `${tool.id} output ${output.id}`);
+        checkUnit(output.unit, `${tool.id} output ${output.id}`);
+      }
     }
   }
 });

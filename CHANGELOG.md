@@ -3,6 +3,14 @@
 All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] – 2026-10-27
+
+### Fixed
+
+- English texts showed Czech units (`% obj.`, `% hm.`, `obj. CO₂`). A `unit`
+  may now be a text per language (`{ cs, en }`) as well as a plain string;
+  `localize()` accepts both.
+
 ## [0.1.0] – 2026-10-27
 
 ### Added
