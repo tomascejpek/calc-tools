@@ -12,16 +12,21 @@ import { isNumber, parseNumber } from './units.js';
 /**
  * @typedef {object} Input
  * @property {string} id
- * @property {'number' | 'select' | 'list'} [type] defaults to 'number'
+ * @property {'number' | 'select' | 'list' | 'text'} [type] defaults to 'number'
  * @property {Text} label
  * @property {string | Text} [unit] a plain string or a text per language
  * @property {number | string} [default]
  * @property {number} [min]
  * @property {number} [max]
  * @property {number} [step]
- * @property {boolean} [optional] an empty number is allowed and read as null
+ * @property {boolean} [optional] an empty value ('' or null) is allowed and read
+ *   as null; a value that is not given at all takes the default, as a form
+ *   shows it
  * @property {{ value: string, label: Text }[]} [options] for 'select'
  * @property {Input[]} [fields] for 'list'
+ * @property {number} [maxLength] for 'text', default 1000 characters
+ * @property {RegExp} [pattern] for 'text': the trimmed text must match it
+ * @property {Text} [hint] for 'text': the expected format, shown when it does not match
  */
 
 /**
@@ -32,12 +37,13 @@ import { isNumber, parseNumber } from './units.js';
  * @property {number} [precision] decimal places to show
  * @property {number} [significant] significant digits to show, for values
  *   spanning many orders of magnitude; precision wins when both are given
- * @property {'number' | 'list'} [type] 'list' outputs an array of numbers
+ * @property {'number' | 'list' | 'text'} [type] 'list' outputs an array of
+ *   numbers, 'text' a string or a text per language (use localize())
  */
 
 /**
  * @typedef {object} Result
- * @property {Record<string, number | null | (number | null)[]>} values
+ * @property {Record<string, number | string | Text | null | (number | null)[]>} values
  * @property {Text[]} warnings
  */
 
@@ -97,6 +103,36 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
       continue;
     }
 
+    if (type === 'text') {
+      if (value === undefined && input.default !== undefined) value = input.default;
+      if (value === undefined || value === null || value === '') {
+        if (input.optional) {
+          values[input.id] = null;
+          continue;
+        }
+        value = input.default ?? '';
+      }
+      if (isNumber(value)) value = String(value);
+      const text = typeof value === 'string' ? value.trim() : null;
+      const maxLength = input.maxLength ?? 1000;
+      if (text === null || text === '') {
+        ok = false;
+        warnings.push({ cs: `${label.cs}: zadejte hodnotu.`, en: `${label.en}: enter a value.` });
+      } else if (text.length > maxLength) {
+        ok = false;
+        warnings.push({
+          cs: `${label.cs}: nejvýš ${maxLength} znaků.`,
+          en: `${label.en}: at most ${maxLength} characters.`,
+        });
+      } else if (input.pattern && !input.pattern.test(text)) {
+        ok = false;
+        const hint = input.hint ? { cs: ` ${input.hint.cs}`, en: ` ${input.hint.en}` } : { cs: '', en: '' };
+        warnings.push({ cs: `${label.cs}: neplatný formát.${hint.cs}`, en: `${label.en}: invalid format.${hint.en}` });
+      }
+      values[input.id] = text === null || text === '' || text.length > maxLength ? null : text;
+      continue;
+    }
+
     if (type === 'list') {
       const items = Array.isArray(value) ? value : [];
       const min = input.min ?? 0;
@@ -120,6 +156,7 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
       continue;
     }
 
+    if (value === undefined && input.default !== undefined) value = input.default;
     if (value === undefined || value === null || value === '') {
       if (input.optional) {
         values[input.id] = null;

@@ -18,6 +18,8 @@ import temperature from './tools/units/temperature.js';
 import specificHeat from './tools/units/specific-heat.js';
 import volumeFlow from './tools/units/volume-flow.js';
 
+import tankVolume from './tools/math/tank-volume.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import co2 from './tools/units/co2.js';
@@ -62,6 +64,7 @@ export { isNumber, parseNumber } from './core/units.js';
 
 const registry = createRegistry([
   volume, mass, pressure, density, temperature, specificHeat, volumeFlow,
+  tankVolume,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

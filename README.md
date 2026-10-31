@@ -34,6 +34,13 @@ cider alongside; other fields will follow.
 | Packaging and dispensing | priming sugar (sucrose, glucose, honey, DME), keg carbonation pressure, draught line length |
 | Wine and spirits | must weight (°NM, °Oe, °Bx, °KMW), potential alcohol and chaptalisation, sulfiting (SO₂), diluting spirit, alcoholmeter temperature correction (OIML) |
 | Mead and cider | honey or sugar for a target gravity, staggered nutrients (TOSNA) |
+| Arithmetic | percentages, percent change and percentage points, rule of three, fractions, rounding and significant digits |
+| Number theory | GCD and LCM, primes and prime factorisation, number bases 2–36, Roman numerals |
+| Algebra | quadratic and cubic equations, systems of 2 or 3 linear equations, powers and logarithms |
+| Geometry | perimeter and area of shapes, volume and surface of solids, triangle solver, Pythagorean theorem, tank volume by liquid level |
+| Combinatorics | factorial, permutations, variations and combinations with and without repetition |
+| Statistics | descriptive statistics with a confidence interval, normal distribution (z-score, p-value, quantile), linear regression |
+| Financial mathematics | compound interest, loan payment, APR (RPSN), VAT, margin and markup |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -135,15 +142,24 @@ export default {
     { id: 'og', type: 'number', label, unit: 'SG', default: 1.050, min, max, step },
     { id: 'method', type: 'select', label, default: 'standard', options: [{ value, label }] },
     { id: 'hops', type: 'list', label, min: 1, max: 10, fields: [/* inputs */] },
+    { id: 'data', type: 'text', label, default: '1 2 3', maxLength: 1000, pattern: /^[0-9 ]+$/, hint: { cs, en } },
+    { id: 'p', type: 'number', label, optional: true, default: 0.95 },
   ],
   outputs: [
     { id: 'abv', label, unit: { cs: '% obj.', en: '% ABV' }, precision: 1 }, // or a plain string such as 'SG'
     { id: 'additions', type: 'list', label, unit: 'IBU', precision: 1 }, // array of numbers
+    { id: 'roots', type: 'text', label }, // a string or { cs, en }; show it with localize()
   ],
   compute(values) { return { values: {}, warnings: [] }; },
   references,
 };
 ```
+
+A `text` input is trimmed and must fit `maxLength` (1000 by default) and
+`pattern`; `hint` explains the expected format in the warning. An
+`optional` input may be left empty (`''` or `null` gives `null`); a value
+that is not passed at all takes the `default`, as a form shows it, so a UI
+can pass only the fields the user changed.
 
 `compute`, `toBase` and `fromBase` are pure functions. Tools contain no HTML
 and do not touch the DOM.
@@ -194,8 +210,8 @@ MIT
 ## Česky
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
-jednotek a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
-a cideru. Nástroje
+jednotek, matematika a finanční matematika a nástroje pro pivovarníky,
+vinaře, pálenkáře a výrobce medoviny a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
 soubory. Nový nástroj: zkopírovat `templates/calculator.js`, zaregistrovat

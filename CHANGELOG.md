@@ -3,6 +3,39 @@
 All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Arithmetic: percentages, percent change and percentage points, rule of
+  three, exact fractions, rounding to decimal places or significant digits
+  by five rules.
+- Number theory: GCD and LCM, primality (deterministic Miller–Rabin) and
+  prime factorisation up to 2⁵³ (trial division and Pollard's rho), number
+  bases 2–36 of any length, Roman numerals.
+- Algebra: quadratic and cubic equations with complex roots, systems of 2 or
+  3 linear equations, powers, roots and logarithms.
+- Geometry: perimeter and area of shapes, volume and surface of solids,
+  triangle solver (law of sines and cosines, both SSA solutions),
+  Pythagorean theorem, tank volume by liquid level (upright,
+  cylindroconical, horizontal; tagged `beer`, so also in `beer.js`).
+- Combinatorics: factorial, permutations, variations and combinations with
+  and without repetition, exact with big integers.
+- Statistics: descriptive statistics with a t-based confidence interval,
+  normal distribution (z-score, p-values, quantile), linear regression.
+- Financial mathematics: compound interest, annuity loan, APR (RPSN) by
+  Directive 2008/48/EC, VAT, margin and markup.
+- Input type `text` (with `maxLength`, `pattern` and `hint`) and output type
+  `text` (a string or a text per language); the demo shows both.
+- `core/special.js` (log-gamma, incomplete gamma and beta, normal and
+  Student t distributions and inverses) and `core/format.js`.
+
+### Changed
+
+- An optional input that is not passed at all takes its `default`, as a form
+  shows it; an empty value (`''` or `null`) is still read as `null`. No
+  existing optional input had a default, so their results are unchanged.
+
 ## [0.3.0] – 2026-10-31
 
 ### Added

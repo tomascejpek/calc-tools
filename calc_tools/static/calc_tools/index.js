@@ -35,6 +35,35 @@ import radiationDose from './tools/units/radiation-dose.js';
 import data from './tools/units/data.js';
 import fuelConsumption from './tools/units/fuel-consumption.js';
 
+import percentage from './tools/math/percentage.js';
+import percentChange from './tools/math/percent-change.js';
+import ruleOfThree from './tools/math/rule-of-three.js';
+import fractions from './tools/math/fractions.js';
+import rounding from './tools/math/rounding.js';
+import gcdLcm from './tools/math/gcd-lcm.js';
+import primes from './tools/math/primes.js';
+import numberBase from './tools/math/number-base.js';
+import roman from './tools/math/roman.js';
+import quadratic from './tools/math/quadratic.js';
+import cubic from './tools/math/cubic.js';
+import linearSystem from './tools/math/linear-system.js';
+import powerLog from './tools/math/power-log.js';
+import planeShapes from './tools/math/plane-shapes.js';
+import solids from './tools/math/solids.js';
+import triangle from './tools/math/triangle.js';
+import pythagoras from './tools/math/pythagoras.js';
+import tankVolume from './tools/math/tank-volume.js';
+import combinatorics from './tools/math/combinatorics.js';
+import statistics from './tools/math/statistics.js';
+import normalDistribution from './tools/math/normal-distribution.js';
+import linearRegression from './tools/math/linear-regression.js';
+
+import compoundInterest from './tools/finance/compound-interest.js';
+import loan from './tools/finance/loan.js';
+import apr from './tools/finance/apr.js';
+import vat from './tools/finance/vat.js';
+import margin from './tools/finance/margin.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -108,6 +137,13 @@ const registry = createRegistry([
   voltage, current, resistance, capacitance, charge,
   illuminance, photometry, photon,
   angle, radioactivity, radiationDose, data, fuelConsumption,
+  percentage, percentChange, ruleOfThree, fractions, rounding,
+  gcdLcm, primes, numberBase, roman,
+  quadratic, cubic, linearSystem, powerLog,
+  planeShapes, solids, triangle, pythagoras, tankVolume,
+  combinatorics,
+  statistics, normalDistribution, linearRegression,
+  compoundInterest, loan, apr, vat, margin,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,
