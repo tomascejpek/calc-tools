@@ -1,6 +1,6 @@
 {
   "name": "calc-tools",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Dependency-free calculators and unit converters (brewing and more) described as data, ready to render as forms.",
   "type": "module",
   "license": "MIT",
@@ -12,6 +12,7 @@
   },
   "exports": {
     ".": "./calc_tools/static/calc_tools/index.js",
+    "./beer": "./calc_tools/static/calc_tools/beer.js",
     "./core/*": "./calc_tools/static/calc_tools/core/*",
     "./tools/*": "./calc_tools/static/calc_tools/tools/*"
   },

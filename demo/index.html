@@ -56,9 +56,12 @@ function el(tag, attrs = {}, ...children) {
   return node;
 }
 
-function format(value, precision) {
+function format(value, precision, significant) {
   if (typeof value !== 'number') return '–';
-  const text = value.toFixed(precision ?? 2);
+  // precision = decimal places; significant = digits for values spanning many orders of magnitude
+  const text = precision === undefined && significant !== undefined
+    ? String(Number(value.toPrecision(significant)))
+    : value.toFixed(precision ?? 2);
   return lang === 'cs' ? text.replace('.', ',') : text;
 }
 
@@ -92,7 +95,7 @@ function renderConverter(tool, body) {
   const update = () => {
     const result = convert(tool, last.value, last.unit, params);
     for (const unit of tool.units) {
-      if (unit.id !== last.unit) fields[unit.id].value = result.values[unit.id] === null ? '' : format(result.values[unit.id], unit.precision);
+      if (unit.id !== last.unit) fields[unit.id].value = result.values[unit.id] === null ? '' : format(result.values[unit.id], unit.precision, unit.significant);
     }
     warnings(warn, result.warnings);
   };
@@ -116,7 +119,7 @@ function renderCalculator(tool, body) {
     outputs.replaceChildren(...tool.outputs.flatMap((output) => {
       const value = result.values[output.id];
       const label = localize(output.label, lang);
-      const row = (text, number) => el('div', { class: 'out' }, el('span', {}, text), el('b', {}, `${format(number, output.precision)} ${localize(output.unit, lang)}`));
+      const row = (text, number) => el('div', { class: 'out' }, el('span', {}, text), el('b', {}, `${format(number, output.precision, output.significant)} ${localize(output.unit, lang)}`));
       return Array.isArray(value) ? value.map((item, index) => row(`${label} ${index + 1}`, item)) : [row(label, value)];
     }));
     warnings(warn, result.warnings);

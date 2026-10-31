@@ -152,3 +152,33 @@ test('unexpected and inherited fields are ignored (mass assignment)', () => {
   }
   assert.equal(/** @type {any} */ ({}).polluted, undefined, 'Object.prototype stays clean');
 });
+
+test('beer.js holds exactly the tools tagged beer, in the same order', async () => {
+  const beer = await import('../calc_tools/static/calc_tools/beer.js');
+  const tagged = tools.filter((tool) => tool.tags.includes('beer'));
+  assert.deepEqual(beer.tools.map((tool) => tool.id), tagged.map((tool) => tool.id));
+  // The very same module objects, not copies
+  for (const tool of beer.tools) assert.equal(tool, getTool(tool.id));
+  for (const id of ['temperature', 'volume', 'mass', 'pressure', 'ibu', 'priming-sugar']) assert.ok(beer.getTool(id), id);
+});
+
+test('beer.js loads no other fields and lists only its categories', async () => {
+  const beer = await import('../calc_tools/static/calc_tools/beer.js');
+  for (const id of ['must-gravity', 'tosna', 'spirit-dilution', 'voltage', 'si-prefix']) assert.equal(beer.getTool(id), undefined, id);
+  const used = new Set(beer.tools.map((tool) => tool.category));
+  assert.deepEqual(beer.categories.map((category) => category.id), categories.filter((category) => used.has(category.id)).map((category) => category.id));
+  assert.ok(!beer.categories.some((category) => ['wine', 'mead', 'units-electric'].includes(category.id)));
+  // Search is limited to brewing tools
+  assert.deepEqual(beer.search('lihoměr'), []);
+  assert.equal(beer.search('hořkost')[0].id, 'ibu');
+  assert.ok(Math.abs(beer.calculate(beer.getTool('abv'), {}).values.abv - 5.25) < 1e-9);
+  // Only brewing modules are imported (no wine, mead or other unit files)
+  const source = (await import('node:fs')).readFileSync(new URL('../calc_tools/static/calc_tools/beer.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /tools\/(wine|mead)\//);
+});
+
+test('createRegistry rejects unknown categories', async () => {
+  const { createRegistry } = await import('../calc_tools/static/calc_tools/core/registry.js');
+  assert.throws(() => createRegistry([{ id: 'x', category: 'nowhere' }]), /Unknown category/);
+  assert.deepEqual(createRegistry([]).tools, []);
+});
