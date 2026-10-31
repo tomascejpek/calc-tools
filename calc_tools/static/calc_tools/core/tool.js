@@ -29,7 +29,9 @@ import { isNumber, parseNumber } from './units.js';
  * @property {string} id
  * @property {Text} label
  * @property {string | Text} [unit] a plain string or a text per language
- * @property {number} [precision]
+ * @property {number} [precision] decimal places to show
+ * @property {number} [significant] significant digits to show, for values
+ *   spanning many orders of magnitude; precision wins when both are given
  * @property {'number' | 'list'} [type] 'list' outputs an array of numbers
  */
 

@@ -3,6 +3,42 @@
 All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] – 2026-10-31
+
+### Added
+
+- Unit converters: SI prefixes from quecto to quetta, length, area, time,
+  speed, acceleration, force, energy, power, torque, density, concentration
+  (with solution density, substance density and molar mass), specific heat
+  capacity, thermal conductivity, volume flow, mass flow, voltage, current,
+  resistance, capacitance, charge (Ah ⇄ Wh at a voltage), illuminance,
+  wavelength ⇄ frequency ⇄ photon energy, angle, radioactivity, radiation
+  dose (Gy ⇄ Sv with the weighting factor), data sizes (kB and KiB) and fuel
+  consumption.
+- Calculator linking lumens, candelas and lux for a beam angle and distance.
+- New units in existing converters: volume (cl, dl, m³, in³, ft³, US quart,
+  UK fl oz), mass (µg, mg, ct, dag, t, grain, stone, short and long ton),
+  pressure (Pa, hPa, MPa, mbar, at, mmHg, Torr, inHg, m H₂O), temperature
+  (Rankine, Réaumur).
+- `significant` on units and outputs: significant digits to show instead of
+  decimal places; the demo honours it.
+- `unitTable()`, `prefixedRows()` and `SI_PREFIXES` in `core/converter.js`.
+- Entry point `beer.js` (package export `calc-tools/beer`) with the same API
+  as `index.js` but only the tools tagged `beer`; the browser loads 51
+  modules instead of 82. `categories` there lists only the categories used.
+- `createRegistry()` and `CATEGORIES` in `core/registry.js`, shared by both
+  entry points.
+
+### Changed
+
+- Unit categories are split into basic units, mechanics, density and
+  concentration, heat, flow, electricity, light and radiation and other
+  units; `units` now holds only brewing units. Temperature, volume and mass
+  move to `units-heat` and `units-basic`, pressure to `units-mechanics`.
+- Temperature, volume, mass, pressure, density, volume flow and specific
+  heat converters are tagged `beer`.
+- The converter round-trip test sets every converter parameter.
+
 ## [0.2.0] – 2026-10-31
 
 ### Added

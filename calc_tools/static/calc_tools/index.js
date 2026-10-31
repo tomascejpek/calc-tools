@@ -1,12 +1,39 @@
 /**
  * Registry of all tools.
  *
- * To add a tool, import its module here and append it to `tools` within its
- * category.
+ * To add a tool, import its module here and append it to the list within its
+ * category; a tool tagged 'beer' also goes into beer.js.
  * @module calc-tools
  */
 
-import { searchTools } from './core/search.js';
+import { createRegistry } from './core/registry.js';
+
+import siPrefix from './tools/units/si-prefix.js';
+import length from './tools/units/length.js';
+import area from './tools/units/area.js';
+import time from './tools/units/time.js';
+import speed from './tools/units/speed.js';
+import acceleration from './tools/units/acceleration.js';
+import force from './tools/units/force.js';
+import energy from './tools/units/energy.js';
+import power from './tools/units/power.js';
+import torque from './tools/units/torque.js';
+import density from './tools/units/density.js';
+import concentration from './tools/units/concentration.js';
+import specificHeat from './tools/units/specific-heat.js';
+import thermalConductivity from './tools/units/thermal-conductivity.js';
+import volumeFlow from './tools/units/volume-flow.js';
+import massFlow from './tools/units/mass-flow.js';
+import { capacitance, current, resistance, voltage } from './tools/units/electric.js';
+import charge from './tools/units/charge.js';
+import illuminance from './tools/units/illuminance.js';
+import photometry from './tools/units/photometry.js';
+import photon from './tools/units/photon.js';
+import angle from './tools/units/angle.js';
+import radioactivity from './tools/units/radioactivity.js';
+import radiationDose from './tools/units/radiation-dose.js';
+import data from './tools/units/data.js';
+import fuelConsumption from './tools/units/fuel-consumption.js';
 
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
@@ -72,26 +99,16 @@ export { localize } from './core/i18n.js';
 export { normalize } from './core/search.js';
 export { isNumber, parseNumber } from './core/units.js';
 
-/** Tool categories in display order. */
-export const categories = [
-  { id: 'units', name: { cs: 'Převody jednotek', en: 'Unit conversions' } },
-  { id: 'mash', name: { cs: 'Rmutování', en: 'Mashing' } },
-  { id: 'water', name: { cs: 'Voda – objemy', en: 'Water volumes' } },
-  { id: 'efficiency', name: { cs: 'Výtěžnost', en: 'Efficiency' } },
-  { id: 'corrections', name: { cs: 'Korekce a měření', en: 'Corrections and readings' } },
-  { id: 'hops', name: { cs: 'Hořkost', en: 'Bitterness' } },
-  { id: 'color', name: { cs: 'Barva', en: 'Colour' } },
-  { id: 'yeast', name: { cs: 'Kvasnice', en: 'Yeast' } },
-  { id: 'fermentation', name: { cs: 'Kvašení a alkohol', en: 'Fermentation and alcohol' } },
-  { id: 'water-chemistry', name: { cs: 'Voda – chemie', en: 'Water chemistry' } },
-  { id: 'packaging', name: { cs: 'Stáčení a výčep', en: 'Packaging and dispensing' } },
-  { id: 'wine', name: { cs: 'Víno a destiláty', en: 'Wine and spirits' } },
-  { id: 'mead', name: { cs: 'Medovina a cider', en: 'Mead and cider' } },
-];
-
-/** All tools, ordered by category. */
-export const tools = [
-  gravity, beerColor, temperature, volume, mass, pressure, co2, abvAbw,
+const registry = createRegistry([
+  siPrefix, length, area, volume, mass, time, speed, acceleration,
+  force, pressure, energy, power, torque,
+  density, concentration,
+  temperature, specificHeat, thermalConductivity,
+  volumeFlow, massFlow,
+  voltage, current, resistance, capacitance, charge,
+  illuminance, photometry, photon,
+  angle, radioactivity, radiationDose, data, fuelConsumption,
+  gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,
   brewhouseEfficiency, maltExtract, ogEstimate,
@@ -104,21 +121,16 @@ export const tools = [
   primingSugar, kegCarbonation, beerLine,
   mustGravity, potentialAlcohol, sulfite, spiritDilution, alcoholmeter,
   meadSugar, tosna,
-].sort((a, b) => categories.findIndex((c) => c.id === a.category) - categories.findIndex((c) => c.id === b.category));
+]);
 
-/**
- * @param {string} id
- */
-export function getTool(id) {
-  return tools.find((tool) => tool.id === id);
-}
-
+/** All tools, ordered by category. */
+export const tools = registry.tools;
+/** Tool categories in display order. */
+export const categories = registry.categories;
+/** Finds a tool by its id. */
+export const getTool = registry.getTool;
 /**
  * Tools matching a query in the given language and in English, ignoring
  * diacritics and case, ordered by relevance. An empty query returns all tools.
- * @param {string} query
- * @param {string} [lang]
  */
-export function search(query, lang = 'cs') {
-  return searchTools(tools, query, lang);
-}
+export const search = registry.search;

@@ -181,13 +181,17 @@ describe('abv-abw', () => {
 
 test('every converter round-trips all units', () => {
   for (const tool of tools.filter((candidate) => candidate.kind === 'converter')) {
+    // Every parameter set, optional ones to the middle of their range
+    const params = Object.fromEntries((tool.params ?? []).map((/** @type {any} */ param) => [
+      param.id, param.default ?? (param.min + param.max) / 2,
+    ]));
     for (const unit of tool.units) {
       const low = unit.min ?? -100;
       const high = unit.max ?? low + 1000;
       for (const share of [0.1, 0.5, 0.9]) {
         const value = low + (high - low) * share;
-        const base = tool.toBase(value, unit.id, {});
-        near(tool.fromBase(base, unit.id, {}), value, Math.abs(value) * 1e-9 + 1e-9, `${tool.id}/${unit.id} at ${value}`);
+        const base = tool.toBase(value, unit.id, params);
+        near(tool.fromBase(base, unit.id, params), value, Math.abs(value) * 1e-9 + 1e-9, `${tool.id}/${unit.id} at ${value}`);
       }
     }
   }

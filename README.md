@@ -13,7 +13,15 @@ cider alongside; other fields will follow.
 
 | Category | Tools |
 |---|---|
-| Unit conversions | gravity (SG, °P, °Bx), beer colour (EBC, SRM, °L), temperature, volume, mass, pressure, CO₂ (volumes, g/l), ABV ⇄ ABW |
+| Basic units | SI prefixes (quecto to quetta), length, area, volume, mass, time, speed, acceleration |
+| Mechanics | force, pressure (Pa, bar, psi, atm, at, mmHg, inHg, m H₂O), energy (J, cal, kWh, BTU, eV), power (W, k, hp), torque |
+| Density and concentration | density, concentration (mg/l, % w/w, % v/v, ppm, mol/l) |
+| Heat | temperature (°C, K, °F, °Ra, °Ré), specific heat capacity, thermal conductivity |
+| Flow | volume flow (l/min, m³/h, GPM, CFM), mass flow |
+| Electricity | voltage, current, resistance, capacitance, charge and battery capacity (Ah ⇄ Wh) |
+| Light and radiation | illuminance, lumens ⇄ candelas ⇄ lux, wavelength ⇄ frequency ⇄ photon energy |
+| Other units | angle, radioactivity, radiation dose (Gy, Sv), data (kB and KiB), fuel consumption |
+| Brewing units | gravity (SG, °P, °Bx), beer colour (EBC, SRM, °L), CO₂ (volumes, g/l), ABV ⇄ ABW |
 | Mashing | strike water temperature, step infusion, decoction |
 | Water volumes | mash and sparge water with boil-off, grain absorption, dead space and cooling losses |
 | Efficiency | brewhouse efficiency, malt extract (% ⇄ PPG), original gravity from a recipe |
@@ -59,7 +67,7 @@ or `tinsethIbu` from `tools/beer/ibu.js`.
 
 ```
 # requirements.txt
-calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@0.2.0
+calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@0.3.0
 ```
 
 ```python
@@ -73,6 +81,18 @@ INSTALLED_APPS = [
 {% load static %}
 <script type="module">
   import { tools, search } from "{% static 'calc_tools/index.js' %}";
+</script>
+```
+
+A site that needs only brewing tools imports `beer.js` instead. It has the
+same API (`tools`, `categories`, `getTool`, `search`, `convert`,
+`calculate`, …) limited to the tools tagged `beer`, including the unit
+converters a brewer needs (temperature, volume, mass, pressure, density,
+volume flow, specific heat), and the browser loads only those modules:
+
+```django
+<script type="module">
+  import { tools, categories, search } from "{% static 'calc_tools/beer.js' %}";
 </script>
 ```
 
@@ -94,6 +114,8 @@ export default {
   name: { cs, en }, description: { cs, en }, keywords: { cs: [], en: [] },
   units: [
     { id: 'sg', label: { cs, en }, precision: 3, min: 0.990, max: 1.200, default: 1.048 },
+    // `precision` is decimal places; `significant` (digits) suits units
+    // spanning many orders of magnitude; precision wins when both are set
     // …; one unit carries `default`, the value shown first
   ],
   params: [],                // optional extra inputs, passed to toBase/fromBase
@@ -128,6 +150,9 @@ and do not touch the DOM.
 
 ## Adding a tool
 
+A converter whose units differ only by a factor can be built from a table
+with `unitTable()` from `core/converter.js` (see `tools/units/length.js`).
+
 1. Copy `templates/calculator.js` to
    `calc_tools/static/calc_tools/tools/<field>/<id>.js`, where the folder is
    the field (`units`, `beer`, `wine`, `mead`) and `category` in the tool is
@@ -139,7 +164,8 @@ and do not touch the DOM.
    that may be entered in SG or °P use `scaleInput()` and `readGravities()`
    from `core/gravity.js`; a list input gets its default item with
    `withDefaultItem()`.
-3. Import the module in `index.js` and add it to `tools`.
+3. Import the module in `index.js` and add it to the list; a tool tagged
+   `beer` goes into `beer.js` too (a test checks that the two agree).
 4. Write tests in `test/` with values from published tables or sources.
    `test/registry.test.js` checks the texts and defaults automatically.
 
@@ -167,8 +193,9 @@ MIT
 
 ## Česky
 
-Knihovna kalkulaček a převodů jednotek pro pivovarníky, vinaře, pálenkáře
-a výrobce medoviny a cideru. Nástroje
+Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
+jednotek a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
 soubory. Nový nástroj: zkopírovat `templates/calculator.js`, zaregistrovat
