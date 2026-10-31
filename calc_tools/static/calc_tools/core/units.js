@@ -165,3 +165,62 @@ export function co2VolumesToGramsPerLitre(volumes) {
 export function co2GramsPerLitreToVolumes(gramsPerLitre) {
   return gramsPerLitre / CO2_G_PER_L_PER_VOLUME;
 }
+
+// Extract and volumes
+
+/** Density of water at 20 °C, kg/l; SG 20/20 °C times this is the density of wort. */
+export const WATER_DENSITY_20 = 0.99820;
+/** 1 lb in kg. */
+export const KG_PER_LB = 0.45359237;
+/** 1 US gallon in litres. */
+export const L_PER_GAL = 3.785411784;
+
+/**
+ * Finds x in [lo, hi] where an increasing function f reaches the target, by
+ * bisection. Returns null when the target lies outside [f(lo), f(hi)].
+ * @param {(x: number) => number} f
+ * @param {number} target
+ * @param {number} lo
+ * @param {number} hi
+ */
+export function solveIncreasing(f, target, lo, hi) {
+  if (!isNumber(target) || target < f(lo) || target > f(hi)) return null;
+  let a = lo;
+  let b = hi;
+  for (let i = 0; i < 100; i++) {
+    const mid = (a + b) / 2;
+    if (f(mid) < target) a = mid;
+    else b = mid;
+    if (b - a < 1e-12) break;
+  }
+  return (a + b) / 2;
+}
+
+/**
+ * Mass of a litre of wort, kg.
+ * @param {number} plato
+ */
+export function wortDensity(plato) {
+  return platoToSg(plato) * WATER_DENSITY_20;
+}
+
+/**
+ * Extract dissolved in wort, kg: volume × density × °P / 100.
+ * @param {number} plato
+ * @param {number} litres volume at 20 °C
+ */
+export function extractKg(plato, litres) {
+  return litres * wortDensity(plato) * plato / 100;
+}
+
+/**
+ * Degree Plato of wort holding a given extract in a given volume; the
+ * inverse of {@link extractKg}.
+ * @param {number} kg extract
+ * @param {number} litres volume at 20 °C
+ * @returns {number | null}
+ */
+export function platoFromExtract(kg, litres) {
+  if (!(litres > 0)) return null;
+  return solveIncreasing((plato) => extractKg(plato, litres), kg, 0, 80);
+}

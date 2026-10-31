@@ -93,3 +93,62 @@ test('every tool works with its defaults', () => {
     }
   }
 });
+
+const HOSTILE = ['<script>alert(1)</script>', '1; DROP TABLE tools', '../../etc/passwd', 'NaN', 'Infinity', '1e999', '0x10', '__proto__'];
+
+/**
+ * Input values where every field holds the given hostile value; lists get
+ * one item made the same way.
+ * @param {any[]} inputs
+ * @param {unknown} value
+ * @returns {Record<string, unknown>}
+ */
+function hostileValues(inputs, value) {
+  return Object.fromEntries(inputs.map((input) => [
+    input.id,
+    input.type === 'list' ? [hostileValues(input.fields, value)] : value,
+  ]));
+}
+
+test('hostile input gives null outputs and warnings, never a result', () => {
+  for (const tool of tools) {
+    for (const value of HOSTILE) {
+      const result = tool.kind === 'converter'
+        ? convert(tool, value, tool.units[0].id)
+        : calculate(tool, hostileValues(tool.inputs, value));
+      for (const [id, output] of Object.entries(result.values)) {
+        assert.equal(output, null, `${tool.id} ${id} with ${value}`);
+      }
+      assert.ok(result.warnings.length > 0, `${tool.id} warns for ${value}`);
+      for (const warning of result.warnings) assert.ok(warning.cs && warning.en, `${tool.id} warning texts`);
+    }
+  }
+});
+
+test('lists that are not arrays and unknown units are rejected', () => {
+  for (const tool of tools) {
+    if (tool.kind === 'converter') {
+      for (const unit of ['__proto__', 'constructor', 'toString', '']) {
+        assert.ok(convert(tool, 1, unit).values[tool.units[0].id] === null, `${tool.id} unit ${unit}`);
+      }
+      continue;
+    }
+    for (const input of tool.inputs.filter((/** @type {any} */ candidate) => candidate.type === 'list')) {
+      const result = calculate(tool, { [input.id]: { length: 1, 0: {} } });
+      assert.ok(Object.values(result.values).every((value) => value === null), `${tool.id} ${input.id}`);
+    }
+  }
+});
+
+test('unexpected and inherited fields are ignored (mass assignment)', () => {
+  for (const tool of tools.filter((candidate) => candidate.kind === 'calculator')) {
+    const plain = calculate(tool, {});
+    const extra = calculate(tool, JSON.parse('{"__proto__": {"polluted": true}, "isAdmin": true, "constructor": 1}'));
+    assert.deepEqual(extra, plain, tool.id);
+    // A value reachable only through the prototype must not be read
+    const first = tool.inputs[0];
+    const inherited = Object.create({ [first.id]: first.type === 'select' ? 'nonsense' : '-1e9' });
+    assert.deepEqual(calculate(tool, inherited), plain, `${tool.id} inherited ${first.id}`);
+  }
+  assert.equal(/** @type {any} */ ({}).polluted, undefined, 'Object.prototype stays clean');
+});

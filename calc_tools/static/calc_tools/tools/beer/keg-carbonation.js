@@ -58,7 +58,7 @@ const outputs = [
 export default {
   id: 'keg-carbonation',
   kind: 'calculator',
-  category: 'beer',
+  category: 'packaging',
   tags: ['beer'],
   name: { cs: 'Sycení v sudu', en: 'Keg carbonation' },
   description: {

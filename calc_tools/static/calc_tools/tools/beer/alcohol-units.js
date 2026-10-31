@@ -20,7 +20,7 @@ const outputs = [
 export default {
   id: 'alcohol-units',
   kind: 'calculator',
-  category: 'beer',
+  category: 'fermentation',
   tags: ['beer'],
   name: { cs: 'Gramy alkoholu a standardní nápoje', en: 'Alcohol grams and standard drinks' },
   description: {

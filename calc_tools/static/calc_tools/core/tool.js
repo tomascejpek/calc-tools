@@ -80,7 +80,8 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
 
   for (const input of inputs) {
     const label = prefixed(input.label, prefix.cs, prefix.en);
-    let value = source[input.id];
+    // Only own properties: values inherited through a prototype are ignored
+    let value = Object.hasOwn(source, input.id) ? source[input.id] : undefined;
     const type = input.type ?? 'number';
 
     if (type === 'select') {
@@ -140,6 +141,19 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
     values[input.id] = number;
   }
   return { ok, values, warnings };
+}
+
+/**
+ * Copies raw values and gives a list input one default item when it is
+ * missing. Only own properties count, as in {@link readInputs}.
+ * @param {unknown} raw
+ * @param {string} id list input id
+ * @returns {Record<string, any>}
+ */
+export function withDefaultItem(raw, id) {
+  const source = raw && typeof raw === 'object' ? /** @type {Record<string, any>} */ (raw) : {};
+  const own = Object.hasOwn(source, id) ? source[id] : undefined;
+  return { ...source, [id]: own ?? [{}] };
 }
 
 /**

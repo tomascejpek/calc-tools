@@ -63,7 +63,7 @@ const outputs = [
 export default {
   id: 'priming-sugar',
   kind: 'calculator',
-  category: 'beer',
+  category: 'packaging',
   tags: ['beer'],
   name: { cs: 'Cukr do lahví (nacukrování)', en: 'Priming sugar' },
   description: {

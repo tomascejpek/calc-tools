@@ -78,7 +78,7 @@ const outputs = [
 export default {
   id: 'abv',
   kind: 'calculator',
-  category: 'beer',
+  category: 'fermentation',
   tags: ['beer'],
   name: { cs: 'Obsah alkoholu', en: 'Alcohol content (ABV)' },
   description: {
