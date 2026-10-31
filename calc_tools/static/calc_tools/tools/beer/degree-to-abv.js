@@ -49,7 +49,7 @@ const outputs = [
 export default {
   id: 'degree-to-abv',
   kind: 'calculator',
-  category: 'beer',
+  category: 'fermentation',
   tags: ['beer'],
   name: { cs: 'Alkohol podle stupňovitosti', en: 'Alcohol from degree Plato' },
   description: {
