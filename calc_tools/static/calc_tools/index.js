@@ -103,6 +103,24 @@ import escapeVelocity from './tools/physics/escape-velocity.js';
 import orbitalPeriod from './tools/physics/orbital-period.js';
 import astroDistance from './tools/physics/astro-distance.js';
 
+import molarMass from './tools/chemistry/molar-mass.js';
+import amount from './tools/chemistry/amount.js';
+import balanceEquation from './tools/chemistry/balance-equation.js';
+import reactionYield from './tools/chemistry/reaction-yield.js';
+import dilution from './tools/chemistry/dilution.js';
+import solutionMixing from './tools/chemistry/solution-mixing.js';
+import solutionPrep from './tools/chemistry/solution-prep.js';
+import ph from './tools/chemistry/ph.js';
+import buffer from './tools/chemistry/buffer.js';
+import dissociationConstant from './tools/chemistry/dissociation-constant.js';
+import gasVolume from './tools/chemistry/gas-volume.js';
+import partialPressure from './tools/chemistry/partial-pressure.js';
+import halfLife from './tools/chemistry/half-life.js';
+import arrhenius from './tools/chemistry/arrhenius.js';
+import reactionHeat from './tools/chemistry/reaction-heat.js';
+import combustionHeat from './tools/chemistry/combustion-heat.js';
+import sanitizer from './tools/chemistry/sanitizer.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -190,6 +208,7 @@ const registry = createRegistry([
   ohmsLaw, componentNetwork, voltageDivider, ledResistor, wireSize, batteryRuntime, electricityCost,
   refraction, thinLens, speedOfSound, doppler, decibels,
   timeDilation, escapeVelocity, orbitalPeriod, astroDistance,
+  molarMass, amount, balanceEquation, reactionYield, dilution, solutionMixing, solutionPrep, ph, buffer, dissociationConstant, gasVolume, partialPressure, halfLife, arrhenius, reactionHeat, combustionHeat, sanitizer,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

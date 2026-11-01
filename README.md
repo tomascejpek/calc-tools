@@ -48,6 +48,13 @@ cider alongside; other fields will follow.
 | Physics – electricity | Ohm's law and power, series and parallel components, voltage divider, LED resistor, wire size by voltage drop, battery runtime, electricity cost |
 | Physics – optics, waves and acoustics | refraction (Snell), thin lens, speed of sound, Doppler effect, decibels |
 | Physics – relativity and astronomy | time dilation, escape and orbital velocity, orbital period (Kepler), astronomical distances (AU, ly, pc) |
+| Chemistry – stoichiometry | molar mass from a formula, amount of substance (m ⇄ n ⇄ N), balancing equations, reaction yield |
+| Chemistry – solutions | dilution (c₁V₁ = c₂V₂), mixing solutions (cross rule), preparing a solution; conversions are in the concentration converter |
+| Chemistry – pH | pH of strong and weak acids and bases, buffers (Henderson–Hasselbalch), Ka ⇄ pKa |
+| Chemistry – gases | gas volume at standard conditions, partial pressures (Dalton) |
+| Chemistry – kinetics | half-life (orders 0, 1, 2), Arrhenius equation and shelf life |
+| Chemistry – thermochemistry | reaction enthalpy (Hess's law), heating value of fuels |
+| Sanitation | diluting Star San, iodophor, hydrogen peroxide, bleach and peracetic acid |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -102,8 +109,9 @@ A site that needs only brewing tools imports `beer.js` instead. It has the
 same API (`tools`, `categories`, `getTool`, `search`, `convert`,
 `calculate`, …) limited to the tools tagged `beer`, including the unit
 converters and physics a brewer needs (temperature, volume, mass, pressure,
-density, volume flow, specific heat, tank volume, heating, mixing, cooling
-and CO₂ solubility), and the browser loads only those modules:
+density, volume flow, specific heat, tank volume, heating, mixing, cooling,
+CO₂ solubility, shelf life and sanitizer dilution), and the browser loads
+only those modules:
 
 ```django
 <script type="module">
@@ -218,7 +226,7 @@ MIT
 ## Česky
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
-jednotek, matematika, finanční matematika, fyzika a nástroje pro
+jednotek, matematika, finanční matematika, fyzika, chemie a nástroje pro
 pivovarníky, vinaře, pálenkáře a výrobce medoviny a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické

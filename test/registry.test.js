@@ -116,6 +116,13 @@ test('hostile input gives null outputs and warnings, never a result', () => {
       const result = tool.kind === 'converter'
         ? convert(tool, value, tool.units[0].id)
         : calculate(tool, hostileValues(tool.inputs, value));
+      // A tool with only text inputs may accept the value when every pattern allows
+      // it (NaN is the formula of sodium nitride), but it must never echo markup
+      const textOnly = tool.kind === 'calculator' && tool.inputs.every((/** @type {any} */ input) => input.type === 'text');
+      if (textOnly && tool.inputs.every((/** @type {any} */ input) => !input.pattern || input.pattern.test(value))) {
+        assert.doesNotMatch(JSON.stringify(result.values), /[<>]/, `${tool.id} with ${value}`);
+        continue;
+      }
       for (const [id, output] of Object.entries(result.values)) {
         assert.equal(output, null, `${tool.id} ${id} with ${value}`);
       }

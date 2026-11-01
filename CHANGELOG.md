@@ -37,8 +37,18 @@ All notable changes to this project are documented here. The project follows
   reflectance, thin lens, speed of sound in air and water, Doppler effect,
   decibels; time dilation, escape and orbital velocity, orbital period,
   astronomical distances.
+- Chemistry: molar mass from formulas with brackets and hydrates, amount of
+  substance, balancing equations exactly (null space with rational
+  arithmetic), reaction yield; dilution, cross rule, preparing solutions;
+  pH of strong and weak acids and bases from the charge balance, buffers,
+  Ka ⇄ pKa; gas volume at standard conditions, partial pressures; half-life
+  of orders 0–2, Arrhenius equation and shelf life; reaction enthalpy by
+  Hess's law, heating value of fuels; sanitizer dilution (Star San,
+  iodophor, peroxide, bleach, peracetic acid).
+- `core/chemistry.js` with IUPAC atomic weights of all 118 elements.
 - `beer.js` also holds the heat tools a brewer needs: heat, mixing, heating
-  time, latent heat, wort cooling, thermal expansion and gas solubility.
+  time, latent heat, wort cooling, thermal expansion and gas solubility,
+  and the Arrhenius shelf life and sanitizer dilution.
 - `core/physics.js` with constants, water density (Kell 1975), specific
   heats and celestial bodies.
 - Input type `text` (with `maxLength`, `pattern` and `hint`) and output type
@@ -48,6 +58,8 @@ All notable changes to this project are documented here. The project follows
 
 ### Changed
 
+- The hostile-input test lets a tool with only text inputs accept a value its
+  pattern allows (NaN is a valid formula), as long as nothing is echoed.
 - An optional input that is not passed at all takes its `default`, as a form
   shows it; an empty value (`''` or `null`) is still read as `null`. No
   existing optional input had a default, so their results are unchanged.
