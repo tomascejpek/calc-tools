@@ -64,6 +64,45 @@ import apr from './tools/finance/apr.js';
 import vat from './tools/finance/vat.js';
 import margin from './tools/finance/margin.js';
 
+import acceleratedMotion from './tools/physics/accelerated-motion.js';
+import freeFall from './tools/physics/free-fall.js';
+import projectile from './tools/physics/projectile.js';
+import mechanicalEnergy from './tools/physics/mechanical-energy.js';
+import momentum from './tools/physics/momentum.js';
+import workPower from './tools/physics/work-power.js';
+import leverPulley from './tools/physics/lever-pulley.js';
+import hydrostaticPressure from './tools/physics/hydrostatic-pressure.js';
+import buoyancy from './tools/physics/buoyancy.js';
+import pipeFlow from './tools/physics/pipe-flow.js';
+import bernoulli from './tools/physics/bernoulli.js';
+import pressureLoss from './tools/physics/pressure-loss.js';
+import heatEnergy from './tools/physics/heat-energy.js';
+import liquidMixing from './tools/physics/liquid-mixing.js';
+import heatingTime from './tools/physics/heating-time.js';
+import latentHeat from './tools/physics/latent-heat.js';
+import wortCooling from './tools/physics/wort-cooling.js';
+import heatLoss from './tools/physics/heat-loss.js';
+import thermalExpansion from './tools/physics/thermal-expansion.js';
+import idealGas from './tools/physics/ideal-gas.js';
+import gasLaws from './tools/physics/gas-laws.js';
+import gasSolubility from './tools/physics/gas-solubility.js';
+import ohmsLaw from './tools/physics/ohms-law.js';
+import componentNetwork from './tools/physics/component-network.js';
+import voltageDivider from './tools/physics/voltage-divider.js';
+import ledResistor from './tools/physics/led-resistor.js';
+import wireSize from './tools/physics/wire-size.js';
+import batteryRuntime from './tools/physics/battery-runtime.js';
+import electricityCost from './tools/physics/electricity-cost.js';
+import refraction from './tools/physics/refraction.js';
+import thinLens from './tools/physics/thin-lens.js';
+import speedOfSound from './tools/physics/speed-of-sound.js';
+import doppler from './tools/physics/doppler.js';
+import decibels from './tools/physics/decibels.js';
+import timeDilation from './tools/physics/time-dilation.js';
+import escapeVelocity from './tools/physics/escape-velocity.js';
+import orbitalPeriod from './tools/physics/orbital-period.js';
+import astroDistance from './tools/physics/astro-distance.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -144,6 +183,13 @@ const registry = createRegistry([
   combinatorics,
   statistics, normalDistribution, linearRegression,
   compoundInterest, loan, apr, vat, margin,
+  acceleratedMotion, freeFall, projectile, mechanicalEnergy, momentum, workPower, leverPulley,
+  hydrostaticPressure, buoyancy, pipeFlow, bernoulli, pressureLoss,
+  heatEnergy, liquidMixing, heatingTime, latentHeat, wortCooling, heatLoss, thermalExpansion,
+  idealGas, gasLaws, gasSolubility,
+  ohmsLaw, componentNetwork, voltageDivider, ledResistor, wireSize, batteryRuntime, electricityCost,
+  refraction, thinLens, speedOfSound, doppler, decibels,
+  timeDilation, escapeVelocity, orbitalPeriod, astroDistance,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

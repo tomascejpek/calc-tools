@@ -41,6 +41,13 @@ cider alongside; other fields will follow.
 | Combinatorics | factorial, permutations, variations and combinations with and without repetition |
 | Statistics | descriptive statistics with a confidence interval, normal distribution (z-score, p-value, quantile), linear regression |
 | Financial mathematics | compound interest, loan payment, APR (RPSN), VAT, margin and markup |
+| Physics – mechanics | accelerated motion, free fall, projectile motion, kinetic and potential energy, momentum and collisions, work and power, lever and pulley |
+| Physics – fluids | hydrostatic pressure, buoyancy, pipe flow (continuity), Bernoulli's equation, pipe pressure loss (Darcy–Weisbach) |
+| Physics – heat | heat Q = m·c·ΔT, mixing liquids, heating time by power, latent heat and boil-off, wort cooling water, heat loss through insulation, thermal expansion |
+| Physics – gases | ideal gas law, gas laws (Boyle, Charles, Gay-Lussac), gas solubility (Henry's law) |
+| Physics – electricity | Ohm's law and power, series and parallel components, voltage divider, LED resistor, wire size by voltage drop, battery runtime, electricity cost |
+| Physics – optics, waves and acoustics | refraction (Snell), thin lens, speed of sound, Doppler effect, decibels |
+| Physics – relativity and astronomy | time dilation, escape and orbital velocity, orbital period (Kepler), astronomical distances (AU, ly, pc) |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -94,8 +101,9 @@ INSTALLED_APPS = [
 A site that needs only brewing tools imports `beer.js` instead. It has the
 same API (`tools`, `categories`, `getTool`, `search`, `convert`,
 `calculate`, …) limited to the tools tagged `beer`, including the unit
-converters a brewer needs (temperature, volume, mass, pressure, density,
-volume flow, specific heat), and the browser loads only those modules:
+converters and physics a brewer needs (temperature, volume, mass, pressure,
+density, volume flow, specific heat, tank volume, heating, mixing, cooling
+and CO₂ solubility), and the browser loads only those modules:
 
 ```django
 <script type="module">
@@ -210,8 +218,8 @@ MIT
 ## Česky
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
-jednotek, matematika a finanční matematika a nástroje pro pivovarníky,
-vinaře, pálenkáře a výrobce medoviny a cideru. Nástroje
+jednotek, matematika, finanční matematika, fyzika a nástroje pro
+pivovarníky, vinaře, pálenkáře a výrobce medoviny a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
 soubory. Nový nástroj: zkopírovat `templates/calculator.js`, zaregistrovat

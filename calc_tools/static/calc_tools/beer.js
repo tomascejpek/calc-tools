@@ -19,6 +19,13 @@ import specificHeat from './tools/units/specific-heat.js';
 import volumeFlow from './tools/units/volume-flow.js';
 
 import tankVolume from './tools/math/tank-volume.js';
+import heatEnergy from './tools/physics/heat-energy.js';
+import liquidMixing from './tools/physics/liquid-mixing.js';
+import heatingTime from './tools/physics/heating-time.js';
+import latentHeat from './tools/physics/latent-heat.js';
+import wortCooling from './tools/physics/wort-cooling.js';
+import thermalExpansion from './tools/physics/thermal-expansion.js';
+import gasSolubility from './tools/physics/gas-solubility.js';
 
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
@@ -65,6 +72,7 @@ export { isNumber, parseNumber } from './core/units.js';
 const registry = createRegistry([
   volume, mass, pressure, density, temperature, specificHeat, volumeFlow,
   tankVolume,
+  heatEnergy, liquidMixing, heatingTime, latentHeat, wortCooling, thermalExpansion, gasSolubility,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

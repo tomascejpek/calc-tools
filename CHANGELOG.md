@@ -25,6 +25,22 @@ All notable changes to this project are documented here. The project follows
   normal distribution (z-score, p-values, quantile), linear regression.
 - Financial mathematics: compound interest, annuity loan, APR (RPSN) by
   Directive 2008/48/EC, VAT, margin and markup.
+- Physics: accelerated motion, free fall, projectile motion, mechanical
+  energy, momentum and collisions, work and power, lever and pulley;
+  hydrostatic pressure, buoyancy, pipe flow, Bernoulli's equation, pipe
+  pressure loss (Darcy–Weisbach with Colebrook); heat for warming, mixing
+  liquids, heating time, latent heat and boil-off, wort cooling water, heat
+  loss through insulation, thermal expansion (water by Kell); ideal gas law,
+  gas laws, gas solubility (Henry); Ohm's law, series and parallel
+  components, voltage divider, LED resistor (E12/E24), wire size by voltage
+  drop, battery runtime, electricity cost; refraction with Fresnel
+  reflectance, thin lens, speed of sound in air and water, Doppler effect,
+  decibels; time dilation, escape and orbital velocity, orbital period,
+  astronomical distances.
+- `beer.js` also holds the heat tools a brewer needs: heat, mixing, heating
+  time, latent heat, wort cooling, thermal expansion and gas solubility.
+- `core/physics.js` with constants, water density (Kell 1975), specific
+  heats and celestial bodies.
 - Input type `text` (with `maxLength`, `pattern` and `hint`) and output type
   `text` (a string or a text per language); the demo shows both.
 - `core/special.js` (log-gamma, incomplete gamma and beta, normal and
