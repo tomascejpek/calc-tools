@@ -69,6 +69,11 @@ All notable changes to this project are documented here. The project follows
   (IANA database via Intl), Julian date. Transport: average speed, pace,
   trip cost, stopping distance. Sport: Riegel race predictor, heart rate
   zones (Tanaka, Karvonen).
+- Computing: transfer speed and download time, image and video size,
+  IPv4 subnet calculator, colour converter, WCAG contrast, Base64 / URL /
+  hex encoding and text hashes. `core/hash.js` has synchronous SHA-256,
+  SHA-1, MD5 and CRC-32 in plain JavaScript, checked against the official
+  test vectors and Node's crypto.
 - Input type `date` (YYYY-MM-DD or D. M. YYYY, read as YYYY-MM-DD; impossible
   dates are rejected); the demo shows a date picker. `core/time.js` with
   calendar arithmetic, Easter, Czech holidays, ISO weeks and durations.

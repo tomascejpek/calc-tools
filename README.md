@@ -69,6 +69,7 @@ cider alongside; other fields will follow.
 | Time and date | days between dates, adding days or working days (Czech holidays), ISO week and day of the year, age, time zones, Julian date |
 | Transport | average speed, pace (min/km ⇄ km/h), trip cost, stopping distance |
 | Sport | race time prediction (Riegel), heart rate zones (Karvonen) |
+| Computing | transfer speed and download time, image and video size, IPv4 subnet (CIDR), colours (HEX ⇄ RGB ⇄ HSL), WCAG contrast, Base64 / URL / hex encoding, hashes (SHA-256, SHA-1, MD5, CRC-32) |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -244,7 +245,7 @@ MIT
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
 jednotek, matematika, finanční matematika, fyzika, chemie, potraviny
 a výživa, technika a stavebnictví, meteorologie a životní prostředí, čas
-a datum, doprava, sport a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a datum, doprava, sport, informatika a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
 a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické

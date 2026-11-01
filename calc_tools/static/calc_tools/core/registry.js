@@ -51,6 +51,7 @@ export const CATEGORIES = [
   { id: 'time-date', name: { cs: 'Čas a datum', en: 'Time and date' } },
   { id: 'transport', name: { cs: 'Doprava', en: 'Transport' } },
   { id: 'sport', name: { cs: 'Sport', en: 'Sport' } },
+  { id: 'computing', name: { cs: 'Informatika', en: 'Computing' } },
   { id: 'units', name: { cs: 'Pivovarské jednotky', en: 'Brewing units' } },
   { id: 'mash', name: { cs: 'Rmutování', en: 'Mashing' } },
   { id: 'water', name: { cs: 'Voda – objemy', en: 'Water volumes' } },

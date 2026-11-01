@@ -170,6 +170,14 @@ import stoppingDistance from './tools/transport/stopping-distance.js';
 import racePredictor from './tools/sport/race-predictor.js';
 import heartRateZones from './tools/sport/heart-rate-zones.js';
 
+import transferTime from './tools/computing/transfer-time.js';
+import mediaSize from './tools/computing/media-size.js';
+import subnet from './tools/computing/subnet.js';
+import color from './tools/computing/color.js';
+import contrast from './tools/computing/contrast.js';
+import encoding from './tools/computing/encoding.js';
+import hash from './tools/computing/hash.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -262,6 +270,7 @@ const registry = createRegistry([
   materialWeight, concrete, mortar, paint, tiles, thread, cuttingSpeed, gearRatio, fits, uValue, surfaceCondensation, humidity, roomClimate, threePhase, powerFactor, circuitBreaker,
   windChill, heatIndex, seaLevelPressure, altitudeBoiling, carbonFootprint,
   dateDifference, dateAdd, weekNumber, age, timeZones, julianDate, averageSpeed, pace, tripCost, stoppingDistance, racePredictor, heartRateZones,
+  transferTime, mediaSize, subnet, color, contrast, encoding, hash,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,
