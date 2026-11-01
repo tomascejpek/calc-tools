@@ -151,6 +151,12 @@ import threePhase from './tools/engineering/three-phase.js';
 import powerFactor from './tools/engineering/power-factor.js';
 import circuitBreaker from './tools/engineering/circuit-breaker.js';
 
+import windChill from './tools/environment/wind-chill.js';
+import heatIndex from './tools/environment/heat-index.js';
+import seaLevelPressure from './tools/environment/sea-level-pressure.js';
+import altitudeBoiling from './tools/environment/altitude-boiling.js';
+import carbonFootprint from './tools/environment/carbon-footprint.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -241,6 +247,7 @@ const registry = createRegistry([
   molarMass, amount, balanceEquation, reactionYield, dilution, solutionMixing, solutionPrep, ph, buffer, dissociationConstant, gasVolume, partialPressure, halfLife, arrhenius, reactionHeat, combustionHeat, sanitizer,
   bakersPercentage, doughHydration, sourdough, kitchenMeasures, recipeScaling, salting, fermentationBrine, pasteurization, bmi, basalMetabolism, foodEnergy, bloodAlcohol,
   materialWeight, concrete, mortar, paint, tiles, thread, cuttingSpeed, gearRatio, fits, uValue, surfaceCondensation, humidity, roomClimate, threePhase, powerFactor, circuitBreaker,
+  windChill, heatIndex, seaLevelPressure, altitudeBoiling, carbonFootprint,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

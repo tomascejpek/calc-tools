@@ -59,6 +59,10 @@ All notable changes to this project are documented here. The project follows
   with the ČSN 73 0540-2 rating; surface condensation and mould risk;
   humidity and dew point (Magnus); room heating and cooling power;
   three-phase power, power factor correction and circuit breaker size.
+- Weather and environment: wind chill (Environment Canada), heat index
+  (NWS), sea-level pressure, altitude from pressure by the standard
+  atmosphere with the boiling point of water (IAPWS-IF97; tagged `beer`
+  and `food`), carbon footprint of energy and travel.
 - `alcohol-units` gains `servings`, a `standard` select (WHO 10 g, UK 8 g,
   Australia 10 g, Canada 13.45 g, USA 14 g) and a `kcal` output; the
   defaults give the same results as before.

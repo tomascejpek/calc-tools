@@ -47,6 +47,7 @@ export const CATEGORIES = [
   { id: 'eng-building', name: { cs: 'Technika – stavební fyzika', en: 'Engineering – building physics' } },
   { id: 'eng-air', name: { cs: 'Technika – vzduch', en: 'Engineering – air' } },
   { id: 'eng-electric', name: { cs: 'Technika – elektroinstalace', en: 'Engineering – electrical installation' } },
+  { id: 'environment', name: { cs: 'Meteorologie a životní prostředí', en: 'Weather and environment' } },
   { id: 'units', name: { cs: 'Pivovarské jednotky', en: 'Brewing units' } },
   { id: 'mash', name: { cs: 'Rmutování', en: 'Mashing' } },
   { id: 'water', name: { cs: 'Voda – objemy', en: 'Water volumes' } },

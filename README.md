@@ -65,6 +65,7 @@ cider alongside; other fields will follow.
 | Engineering – building physics | thermal resistance and U-value (EN ISO 6946, ČSN 73 0540-2), surface condensation and mould risk |
 | Engineering – air | humidity (relative ⇄ absolute, dew point), heating and cooling power for a room |
 | Engineering – electrical installation | three-phase power and power factor, power factor correction, circuit breaker size |
+| Weather and environment | wind chill, heat index, sea-level pressure, altitude from pressure and the boiling point of water, carbon footprint |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -120,8 +121,9 @@ same API (`tools`, `categories`, `getTool`, `search`, `convert`,
 `calculate`, …) limited to the tools tagged `beer`, including the unit
 converters and physics a brewer needs (temperature, volume, mass, pressure,
 density, volume flow, specific heat, tank volume, heating, mixing, cooling,
-CO₂ solubility, shelf life, sanitizer dilution, pasteurization and blood
-alcohol), and the browser loads only those modules:
+CO₂ solubility, shelf life, sanitizer dilution, pasteurization, blood
+alcohol and the boiling point at altitude), and the browser loads only
+those modules:
 
 ```django
 <script type="module">
@@ -237,7 +239,8 @@ MIT
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
 jednotek, matematika, finanční matematika, fyzika, chemie, potraviny
-a výživa, technika a stavebnictví a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a výživa, technika a stavebnictví, meteorologie a životní prostředí
+a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
 a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
