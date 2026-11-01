@@ -60,6 +60,11 @@ cider alongside; other fields will follow.
 | Preserving | salting and curing (with nitrite curing salt), brine for fermenting vegetables, pasteurization units (PU) |
 | Nutrition | BMI, basal metabolic rate (Mifflin–St Jeor), food energy from nutrients (kJ ⇄ kcal) |
 | Alcohol and health | blood alcohol by Widmark and time to sober up, alcohol grams and standard drinks by country |
+| Engineering – materials | weight of sheets, bars, tubes and profiles, concrete, mortar and plaster, paint, tiles with adhesive and grout |
+| Engineering – mechanical | ISO metric threads and tap drills, cutting speed and spindle speed, gear and pulley ratios, limits and fits (ISO 286) |
+| Engineering – building physics | thermal resistance and U-value (EN ISO 6946, ČSN 73 0540-2), surface condensation and mould risk |
+| Engineering – air | humidity (relative ⇄ absolute, dew point), heating and cooling power for a room |
+| Engineering – electrical installation | three-phase power and power factor, power factor correction, circuit breaker size |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -232,7 +237,7 @@ MIT
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
 jednotek, matematika, finanční matematika, fyzika, chemie, potraviny
-a výživa a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a výživa, technika a stavebnictví a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
 a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické

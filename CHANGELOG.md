@@ -51,6 +51,14 @@ All notable changes to this project are documented here. The project follows
   or pan size, salting and curing with nitrite salts, fermentation brine,
   pasteurization units, BMI, basal metabolic rate (Mifflin–St Jeor), food
   energy by EU factors, blood alcohol (Widmark with Seidl's factor).
+- Engineering and building: material weight of sheets, bars, tubes and
+  profiles; concrete, mortar and plaster, paint, tiles with adhesive and
+  grout; ISO metric threads with tap drills and stress area; cutting speed;
+  gear and pulley ratios with belt length; ISO 286 limits and fits (holes H,
+  G, F, shafts f–p, IT5–IT11, up to 500 mm); U-value of layered elements
+  with the ČSN 73 0540-2 rating; surface condensation and mould risk;
+  humidity and dew point (Magnus); room heating and cooling power;
+  three-phase power, power factor correction and circuit breaker size.
 - `alcohol-units` gains `servings`, a `standard` select (WHO 10 g, UK 8 g,
   Australia 10 g, Canada 13.45 g, USA 14 g) and a `kcal` output; the
   defaults give the same results as before.

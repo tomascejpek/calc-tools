@@ -134,6 +134,23 @@ import basalMetabolism from './tools/food/basal-metabolism.js';
 import foodEnergy from './tools/food/food-energy.js';
 import bloodAlcohol from './tools/food/blood-alcohol.js';
 
+import materialWeight from './tools/engineering/material-weight.js';
+import concrete from './tools/engineering/concrete.js';
+import mortar from './tools/engineering/mortar.js';
+import paint from './tools/engineering/paint.js';
+import tiles from './tools/engineering/tiles.js';
+import thread from './tools/engineering/thread.js';
+import cuttingSpeed from './tools/engineering/cutting-speed.js';
+import gearRatio from './tools/engineering/gear-ratio.js';
+import fits from './tools/engineering/fits.js';
+import uValue from './tools/engineering/u-value.js';
+import surfaceCondensation from './tools/engineering/surface-condensation.js';
+import humidity from './tools/engineering/humidity.js';
+import roomClimate from './tools/engineering/room-climate.js';
+import threePhase from './tools/engineering/three-phase.js';
+import powerFactor from './tools/engineering/power-factor.js';
+import circuitBreaker from './tools/engineering/circuit-breaker.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -223,6 +240,7 @@ const registry = createRegistry([
   timeDilation, escapeVelocity, orbitalPeriod, astroDistance,
   molarMass, amount, balanceEquation, reactionYield, dilution, solutionMixing, solutionPrep, ph, buffer, dissociationConstant, gasVolume, partialPressure, halfLife, arrhenius, reactionHeat, combustionHeat, sanitizer,
   bakersPercentage, doughHydration, sourdough, kitchenMeasures, recipeScaling, salting, fermentationBrine, pasteurization, bmi, basalMetabolism, foodEnergy, bloodAlcohol,
+  materialWeight, concrete, mortar, paint, tiles, thread, cuttingSpeed, gearRatio, fits, uValue, surfaceCondensation, humidity, roomClimate, threePhase, powerFactor, circuitBreaker,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,
