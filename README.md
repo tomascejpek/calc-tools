@@ -103,7 +103,7 @@ or `tinsethIbu` from `tools/beer/ibu.js`.
 
 ```
 # requirements.txt
-calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@0.3.0
+calc-tools @ git+https://github.com/tomascejpek/calc-tools.git@0.4.0
 ```
 
 ```python
