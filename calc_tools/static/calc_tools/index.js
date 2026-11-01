@@ -121,6 +121,19 @@ import reactionHeat from './tools/chemistry/reaction-heat.js';
 import combustionHeat from './tools/chemistry/combustion-heat.js';
 import sanitizer from './tools/chemistry/sanitizer.js';
 
+import bakersPercentage from './tools/food/bakers-percentage.js';
+import doughHydration from './tools/food/dough-hydration.js';
+import sourdough from './tools/food/sourdough.js';
+import kitchenMeasures from './tools/food/kitchen-measures.js';
+import recipeScaling from './tools/food/recipe-scaling.js';
+import salting from './tools/food/salting.js';
+import fermentationBrine from './tools/food/fermentation-brine.js';
+import pasteurization from './tools/food/pasteurization.js';
+import bmi from './tools/food/bmi.js';
+import basalMetabolism from './tools/food/basal-metabolism.js';
+import foodEnergy from './tools/food/food-energy.js';
+import bloodAlcohol from './tools/food/blood-alcohol.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -209,6 +222,7 @@ const registry = createRegistry([
   refraction, thinLens, speedOfSound, doppler, decibels,
   timeDilation, escapeVelocity, orbitalPeriod, astroDistance,
   molarMass, amount, balanceEquation, reactionYield, dilution, solutionMixing, solutionPrep, ph, buffer, dissociationConstant, gasVolume, partialPressure, halfLife, arrhenius, reactionHeat, combustionHeat, sanitizer,
+  bakersPercentage, doughHydration, sourdough, kitchenMeasures, recipeScaling, salting, fermentationBrine, pasteurization, bmi, basalMetabolism, foodEnergy, bloodAlcohol,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

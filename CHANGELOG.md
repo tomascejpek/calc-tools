@@ -46,6 +46,14 @@ All notable changes to this project are documented here. The project follows
   Hess's law, heating value of fuels; sanitizer dilution (Star San,
   iodophor, peroxide, bleach, peracetic acid).
 - `core/chemistry.js` with IUPAC atomic weights of all 118 elements.
+- Food and nutrition: baker's percentages, dough hydration, sourdough
+  levain, kitchen measures by ingredient density, recipe scaling by servings
+  or pan size, salting and curing with nitrite salts, fermentation brine,
+  pasteurization units, BMI, basal metabolic rate (Mifflin–St Jeor), food
+  energy by EU factors, blood alcohol (Widmark with Seidl's factor).
+- `alcohol-units` gains `servings`, a `standard` select (WHO 10 g, UK 8 g,
+  Australia 10 g, Canada 13.45 g, USA 14 g) and a `kcal` output; the
+  defaults give the same results as before.
 - `beer.js` also holds the heat tools a brewer needs: heat, mixing, heating
   time, latent heat, wort cooling, thermal expansion and gas solubility,
   and the Arrhenius shelf life and sanitizer dilution.
@@ -58,6 +66,9 @@ All notable changes to this project are documented here. The project follows
 
 ### Changed
 
+- `alcohol-units` moves from the `fermentation` category to the new
+  `alcohol-health` category; pasteurization and blood alcohol are tagged
+  `beer` and in `beer.js` too.
 - The hostile-input test lets a tool with only text inputs accept a value its
   pattern allows (NaN is a valid formula), as long as nothing is echoed.
 - An optional input that is not passed at all takes its `default`, as a form

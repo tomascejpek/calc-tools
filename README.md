@@ -29,7 +29,7 @@ cider alongside; other fields will follow.
 | Bitterness | IBU by Tinseth, Rager, Garetz or Daniels, hop stand and whirlpool, hop utilisation, BU:GU |
 | Colour | beer colour from a recipe (MCU → SRM by Morey) |
 | Yeast | pitch rate, stir plate starter (Troester), liquid yeast viability |
-| Fermentation and alcohol | alcohol from OG/FG, alcohol from degree Plato, attenuation (RDF), real extract and calories, alcohol grams and standard drinks |
+| Fermentation and alcohol | alcohol from OG/FG, alcohol from degree Plato, attenuation (RDF), real extract and calories |
 | Water chemistry | residual alkalinity, sulfate to chloride ratio, brewing salt additions, mash pH estimate, lactic or phosphoric acid for water |
 | Packaging and dispensing | priming sugar (sucrose, glucose, honey, DME), keg carbonation pressure, draught line length |
 | Wine and spirits | must weight (°NM, °Oe, °Bx, °KMW), potential alcohol and chaptalisation, sulfiting (SO₂), diluting spirit, alcoholmeter temperature correction (OIML) |
@@ -55,6 +55,11 @@ cider alongside; other fields will follow.
 | Chemistry – kinetics | half-life (orders 0, 1, 2), Arrhenius equation and shelf life |
 | Chemistry – thermochemistry | reaction enthalpy (Hess's law), heating value of fuels |
 | Sanitation | diluting Star San, iodophor, hydrogen peroxide, bleach and peracetic acid |
+| Baking | baker's percentages, dough hydration, sourdough levain build |
+| Kitchen | kitchen measures (cups, spoons ⇄ grams by ingredient), scaling a recipe by servings or pan size |
+| Preserving | salting and curing (with nitrite curing salt), brine for fermenting vegetables, pasteurization units (PU) |
+| Nutrition | BMI, basal metabolic rate (Mifflin–St Jeor), food energy from nutrients (kJ ⇄ kcal) |
+| Alcohol and health | blood alcohol by Widmark and time to sober up, alcohol grams and standard drinks by country |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -110,8 +115,8 @@ same API (`tools`, `categories`, `getTool`, `search`, `convert`,
 `calculate`, …) limited to the tools tagged `beer`, including the unit
 converters and physics a brewer needs (temperature, volume, mass, pressure,
 density, volume flow, specific heat, tank volume, heating, mixing, cooling,
-CO₂ solubility, shelf life and sanitizer dilution), and the browser loads
-only those modules:
+CO₂ solubility, shelf life, sanitizer dilution, pasteurization and blood
+alcohol), and the browser loads only those modules:
 
 ```django
 <script type="module">
@@ -226,8 +231,9 @@ MIT
 ## Česky
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
-jednotek, matematika, finanční matematika, fyzika, chemie a nástroje pro
-pivovarníky, vinaře, pálenkáře a výrobce medoviny a cideru. Nástroje
+jednotek, matematika, finanční matematika, fyzika, chemie, potraviny
+a výživa a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
 soubory. Nový nástroj: zkopírovat `templates/calculator.js`, zaregistrovat
