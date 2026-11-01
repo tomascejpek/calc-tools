@@ -19,7 +19,7 @@ export default {
   id: 'alcoholmeter',
   kind: 'calculator',
   category: 'wine',
-  tags: ['spirits'],
+  tags: ['spirits', 'beer'],
   name: { cs: 'Lihoměr – teplotní korekce', en: 'Alcoholmeter temperature correction' },
   description: {
     cs: 'Oprava údaje lihoměru (alkoholometru) kalibrovaného na 20 °C, když destilát má jinou teplotu. Teplý destilát je řidší a lihoměr ukazuje víc, studený méně. Počítá podle vzorce mezinárodních alkoholometrických tabulek (OIML) včetně roztažnosti skla; platí jen pro směs vody a alkoholu, ne pro likéry s cukrem.',

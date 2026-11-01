@@ -171,17 +171,27 @@ test('beer.js holds exactly the tools tagged beer, in the same order', async () 
 
 test('beer.js loads no other fields and lists only its categories', async () => {
   const beer = await import('../calc_tools/static/calc_tools/beer.js');
-  for (const id of ['must-gravity', 'tosna', 'spirit-dilution', 'voltage', 'si-prefix']) assert.equal(beer.getTool(id), undefined, id);
+  for (const id of ['voltage', 'si-prefix', 'subnet', 'sourdough']) assert.equal(beer.getTool(id), undefined, id);
   const used = new Set(beer.tools.map((tool) => tool.category));
   assert.deepEqual(beer.categories.map((category) => category.id), categories.filter((category) => used.has(category.id)).map((category) => category.id));
-  assert.ok(!beer.categories.some((category) => ['wine', 'mead', 'units-electric'].includes(category.id)));
-  // Search is limited to brewing tools
-  assert.deepEqual(beer.search('lihoměr'), []);
+  assert.ok(!beer.categories.some((category) => ['units-electric', 'computing'].includes(category.id)));
+  // Search is limited to these tools
+  assert.deepEqual(beer.search('subnet'), []);
   assert.equal(beer.search('hořkost')[0].id, 'ibu');
   assert.ok(Math.abs(beer.calculate(beer.getTool('abv'), {}).values.abv - 5.25) < 1e-9);
-  // Only brewing modules are imported (no wine, mead or other unit files)
+  // Only the needed modules are imported (no electric units, computing, …)
   const source = (await import('node:fs')).readFileSync(new URL('../calc_tools/static/calc_tools/beer.js', import.meta.url), 'utf8');
-  assert.doesNotMatch(source, /tools\/(wine|mead)\//);
+  assert.doesNotMatch(source, /tools\/(computing|engineering|finance|sport|transport)\//);
+});
+
+test('beer.js holds the wine, mead and spirits tools too', async () => {
+  const beer = await import('../calc_tools/static/calc_tools/beer.js');
+  for (const id of ['must-gravity', 'potential-alcohol', 'sulfite', 'spirit-dilution', 'alcoholmeter', 'mead-sugar', 'tosna']) {
+    assert.equal(beer.getTool(id), getTool(id), id);
+  }
+  assert.ok(beer.categories.some((category) => category.id === 'wine'));
+  assert.ok(beer.categories.some((category) => category.id === 'mead'));
+  assert.equal(beer.search('lihoměr')[0].id, 'alcoholmeter');
 });
 
 test('createRegistry rejects unknown categories', async () => {

@@ -51,7 +51,7 @@ export default {
   id: 'sulfite',
   kind: 'calculator',
   category: 'wine',
-  tags: ['wine', 'cider', 'mead'],
+  tags: ['wine', 'cider', 'mead', 'beer'],
   name: { cs: 'Síření vína (SO₂, pyrosiřičitan)', en: 'Sulfiting wine (SO₂, metabisulfite)' },
   description: {
     cs: 'Kolik pyrosiřičitanu přidat, aby víno mělo dost volného SO₂. Ochranně působí molekulární SO₂, jehož podíl klesá s rostoucím pH: volný SO₂ = molekulární × (1 + 10^(pH − 1,81)). Pro bílá vína se cílí 0,8 mg/l, pro červená 0,5 mg/l. Pyrosiřičitan draselný obsahuje 57,6 % SO₂.',

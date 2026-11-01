@@ -51,7 +51,7 @@ export default {
   id: 'tosna',
   kind: 'calculator',
   category: 'mead',
-  tags: ['mead'],
+  tags: ['mead', 'beer'],
   name: { cs: 'Výživa kvasinek pro medovinu (TOSNA)', en: 'Mead nutrients (TOSNA)' },
   description: {
     cs: 'Stupňovité přidávání organické výživy Fermaid O podle protokolu TOSNA: celková dávka = °Bx × 10 × nároky kvasinek / 50 g na galon, rozdělená do čtyř stejných dávek po 24, 48 a 72 hodinách a při odbourání 1/3 cukru (nejpozději 7. den). Go-Ferm se dává 1,25 g na gram kvasinek do 20× více vody.',

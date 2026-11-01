@@ -120,9 +120,10 @@ INSTALLED_APPS = [
 </script>
 ```
 
-A site that needs only brewing tools imports `beer.js` instead. It has the
-same API (`tools`, `categories`, `getTool`, `search`, `convert`,
-`calculate`, …) limited to the tools tagged `beer`, including the unit
+A site that needs only the tools for beer and other alcoholic drinks (wine,
+mead, cider, spirits) imports `beer.js` instead. It has the same API
+(`tools`, `categories`, `getTool`, `search`, `convert`, `calculate`, …)
+limited to the tools tagged `beer`, including the unit
 converters and physics a brewer needs (temperature, volume, mass, pressure,
 density, volume flow, specific heat, tank volume, heating, mixing, cooling,
 CO₂ solubility, shelf life, sanitizer dilution, pasteurization, blood
@@ -214,7 +215,8 @@ with `unitTable()` from `core/converter.js` (see `tools/units/length.js`).
    from `core/gravity.js`; a list input gets its default item with
    `withDefaultItem()`.
 3. Import the module in `index.js` and add it to the list; a tool tagged
-   `beer` goes into `beer.js` too (a test checks that the two agree).
+   `beer` (anything about beer, wine, mead, cider or spirits) goes into
+   `beer.js` too (a test checks that the two agree).
 4. Write tests in `test/` with values from published tables or sources.
    `test/registry.test.js` checks the texts and defaults automatically.
 

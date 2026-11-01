@@ -43,7 +43,7 @@ export default {
   id: 'spirit-dilution',
   kind: 'calculator',
   category: 'wine',
-  tags: ['spirits'],
+  tags: ['spirits', 'beer'],
   name: { cs: 'Ředění destilátu', en: 'Diluting spirit' },
   description: {
     cs: 'Kolik vody přidat do destilátu pro cílovou sílu v % obj. Směs vody a alkoholu má menší objem než součet obou (kontrakce), proto výpočet vychází z hmotnosti alkoholu a hustot podle mezinárodních alkoholometrických tabulek. Objemy platí při 20 °C. Pro srovnání ukáže i prostý poměr, který vody podhodnotí.',

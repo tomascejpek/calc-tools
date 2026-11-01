@@ -50,7 +50,7 @@ export default {
   id: 'mead-sugar',
   kind: 'calculator',
   category: 'mead',
-  tags: ['mead', 'cider'],
+  tags: ['mead', 'cider', 'beer'],
   name: { cs: 'Med nebo cukr na cílovou hustotu', en: 'Honey or sugar for a target gravity' },
   description: {
     cs: 'Kolik medu nebo cukru a kolik vody či jablečné šťávy smíchat, aby vznikl mošt daného objemu a hustoty. Med se počítá s 80 % extraktu. U cideru zadejte hustotu šťávy (obvykle 1,040–1,055).',

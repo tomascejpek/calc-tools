@@ -1,9 +1,10 @@
 /**
- * Registry of brewing tools only: every tool tagged 'beer', including the
- * general unit converters a brewer needs. Same API as index.js, but the
- * browser loads only these modules.
+ * Registry of the tools for brewing and other alcoholic drinks (wine, mead,
+ * cider, spirits): every tool tagged 'beer', including the general unit
+ * converters a brewer needs. Same API as index.js, but the browser loads
+ * only these modules.
  *
- * To add a brewing tool, import it here as well as in index.js;
+ * To add such a tool, import it here as well as in index.js;
  * test/registry.test.js checks that both agree.
  * @module calc-tools/beer
  */
@@ -69,6 +70,15 @@ import primingSugar from './tools/beer/priming-sugar.js';
 import kegCarbonation from './tools/beer/keg-carbonation.js';
 import beerLine from './tools/beer/beer-line.js';
 
+import mustGravity from './tools/wine/must-gravity.js';
+import potentialAlcohol from './tools/wine/potential-alcohol.js';
+import sulfite from './tools/wine/sulfite.js';
+import spiritDilution from './tools/wine/spirit-dilution.js';
+import alcoholmeter from './tools/wine/alcoholmeter.js';
+
+import meadSugar from './tools/mead/mead-sugar.js';
+import tosna from './tools/mead/tosna.js';
+
 export { calculate, convert, emptyResult, readInputs } from './core/tool.js';
 export { localize } from './core/i18n.js';
 export { normalize } from './core/search.js';
@@ -89,16 +99,18 @@ const registry = createRegistry([
   abv, degreeToAbv, attenuation, alcoholUnits,
   residualAlkalinity, sulfateChloride, waterSalts, mashPh, waterAcidification,
   primingSugar, kegCarbonation, beerLine,
+  mustGravity, potentialAlcohol, sulfite, spiritDilution, alcoholmeter,
+  meadSugar, tosna,
 ]);
 
-/** Brewing tools, ordered by category. */
+/** Brewing, wine, mead and spirits tools, ordered by category. */
 export const tools = registry.tools;
-/** Categories of the brewing tools in display order. */
+/** Categories of these tools in display order. */
 export const categories = registry.categories;
-/** Finds a brewing tool by its id. */
+/** Finds one of these tools by its id. */
 export const getTool = registry.getTool;
 /**
- * Brewing tools matching a query in the given language and in English,
+ * Tools of this registry matching a query in the given language and in English,
  * ignoring diacritics and case, ordered by relevance.
  */
 export const search = registry.search;

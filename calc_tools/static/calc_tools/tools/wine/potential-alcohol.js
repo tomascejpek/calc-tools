@@ -51,7 +51,7 @@ export default {
   id: 'potential-alcohol',
   kind: 'calculator',
   category: 'wine',
-  tags: ['wine'],
+  tags: ['wine', 'beer'],
   name: { cs: 'Dosažitelný alkohol z moštu', en: 'Potential alcohol of must' },
   description: {
     cs: 'Kolik alkoholu dá mošt po úplném prokvašení: 16,83 g cukru na litr dává 1 % obj. (předpis EU). Při zadání cílového alkoholu spočítá i doslazení řepným cukrem včetně objemu, který cukr přidá. Doslazování vína upravují předpisy; ověřte si, co je povoleno.',

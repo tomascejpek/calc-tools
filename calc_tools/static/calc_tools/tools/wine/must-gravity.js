@@ -71,7 +71,7 @@ export default {
   id: 'must-gravity',
   kind: 'converter',
   category: 'wine',
-  tags: ['wine'],
+  tags: ['wine', 'beer'],
   name: { cs: 'Cukernatost moštu (°NM, °Oe, °Bx, °KMW)', en: 'Must weight (°Oe, °Bx, °KMW, °NM)' },
   description: {
     cs: 'Převod cukernatosti moštu mezi stupni Oechsle, Brix, Klosterneuburského moštoměru (°KMW, hmotnostní % cukru) a normalizovaného moštoměru (°NM, kg cukru ve 100 l moštu). °KMW se počítá podle Oe = KMW × (4,54 + 0,022 × KMW), °NM = °KMW × hustota moštu.',

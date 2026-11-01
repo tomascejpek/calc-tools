@@ -100,6 +100,10 @@ All notable changes to this project are documented here. The project follows
 - An optional input that is not passed at all takes its `default`, as a form
   shows it; an empty value (`''` or `null`) is still read as `null`. No
   existing optional input had a default, so their results are unchanged.
+- `beer.js` covers every alcoholic drink, not only beer: the wine, mead,
+  cider and spirits tools (must gravity, potential alcohol, sulphite,
+  spirit dilution, alcoholmeter, mead sugar, TOSNA) are tagged `beer` and
+  load there too.
 
 ## [0.3.0] – 2026-10-31
 
