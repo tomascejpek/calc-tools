@@ -157,6 +157,19 @@ import seaLevelPressure from './tools/environment/sea-level-pressure.js';
 import altitudeBoiling from './tools/environment/altitude-boiling.js';
 import carbonFootprint from './tools/environment/carbon-footprint.js';
 
+import dateDifference from './tools/time/date-difference.js';
+import dateAdd from './tools/time/date-add.js';
+import weekNumber from './tools/time/week-number.js';
+import age from './tools/time/age.js';
+import timeZones from './tools/time/time-zones.js';
+import julianDate from './tools/time/julian-date.js';
+import averageSpeed from './tools/transport/average-speed.js';
+import pace from './tools/transport/pace.js';
+import tripCost from './tools/transport/trip-cost.js';
+import stoppingDistance from './tools/transport/stopping-distance.js';
+import racePredictor from './tools/sport/race-predictor.js';
+import heartRateZones from './tools/sport/heart-rate-zones.js';
+
 import gravity from './tools/units/gravity.js';
 import beerColor from './tools/units/beer-color.js';
 import temperature from './tools/units/temperature.js';
@@ -248,6 +261,7 @@ const registry = createRegistry([
   bakersPercentage, doughHydration, sourdough, kitchenMeasures, recipeScaling, salting, fermentationBrine, pasteurization, bmi, basalMetabolism, foodEnergy, bloodAlcohol,
   materialWeight, concrete, mortar, paint, tiles, thread, cuttingSpeed, gearRatio, fits, uValue, surfaceCondensation, humidity, roomClimate, threePhase, powerFactor, circuitBreaker,
   windChill, heatIndex, seaLevelPressure, altitudeBoiling, carbonFootprint,
+  dateDifference, dateAdd, weekNumber, age, timeZones, julianDate, averageSpeed, pace, tripCost, stoppingDistance, racePredictor, heartRateZones,
   gravity, beerColor, co2, abvAbw,
   strikeWater, mashInfusion, decoction,
   waterVolumes,

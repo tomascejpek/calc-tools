@@ -63,6 +63,15 @@ All notable changes to this project are documented here. The project follows
   (NWS), sea-level pressure, altitude from pressure by the standard
   atmosphere with the boiling point of water (IAPWS-IF97; tagged `beer`
   and `food`), carbon footprint of energy and travel.
+- Time and date: days between dates with working days (Czech public
+  holidays including Easter), adding days or working days, ISO week and day
+  of the year, age and next birthday, time zones with daylight saving time
+  (IANA database via Intl), Julian date. Transport: average speed, pace,
+  trip cost, stopping distance. Sport: Riegel race predictor, heart rate
+  zones (Tanaka, Karvonen).
+- Input type `date` (YYYY-MM-DD or D. M. YYYY, read as YYYY-MM-DD; impossible
+  dates are rejected); the demo shows a date picker. `core/time.js` with
+  calendar arithmetic, Easter, Czech holidays, ISO weeks and durations.
 - `alcohol-units` gains `servings`, a `standard` select (WHO 10 g, UK 8 g,
   Australia 10 g, Canada 13.45 g, USA 14 g) and a `kcal` output; the
   defaults give the same results as before.

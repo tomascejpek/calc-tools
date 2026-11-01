@@ -6,13 +6,15 @@
 
 import { localize } from './i18n.js';
 import { isNumber, parseNumber } from './units.js';
+import { isoText, parseDate } from './time.js';
 
 /** @typedef {import('./i18n.js').Text} Text */
 
 /**
  * @typedef {object} Input
  * @property {string} id
- * @property {'number' | 'select' | 'list' | 'text'} [type] defaults to 'number'
+ * @property {'number' | 'select' | 'list' | 'text' | 'date'} [type] defaults to 'number';
+ *   'date' accepts YYYY-MM-DD or D. M. YYYY and is read as YYYY-MM-DD
  * @property {Text} label
  * @property {string | Text} [unit] a plain string or a text per language
  * @property {number | string} [default]
@@ -100,6 +102,26 @@ export function readInputs(inputs, raw = {}, prefix = { cs: '', en: '' }) {
         value = null;
       }
       values[input.id] = value;
+      continue;
+    }
+
+    if (type === 'date') {
+      if (value === undefined && input.default !== undefined) value = input.default;
+      if ((value === undefined || value === null || value === '') && input.optional) {
+        values[input.id] = null;
+        continue;
+      }
+      const date = typeof value === 'string' && value.length <= 20 ? parseDate(value) : null;
+      if (date === null) {
+        ok = false;
+        warnings.push({
+          cs: `${label.cs}: zadejte platné datum (RRRR-MM-DD nebo D. M. RRRR).`,
+          en: `${label.en}: enter a valid date (YYYY-MM-DD or D. M. YYYY).`,
+        });
+        values[input.id] = null;
+      } else {
+        values[input.id] = isoText(date);
+      }
       continue;
     }
 

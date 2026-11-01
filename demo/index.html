@@ -72,6 +72,11 @@ function control(input, value, onChange) {
     select.value = value;
     return select;
   }
+  if (input.type === 'date') {
+    const box = el('input', { type: 'date', oninput: () => onChange(box.value) });
+    box.value = value ?? '';
+    return box;
+  }
   if (input.type === 'text') {
     // Long texts such as data series get a text area
     const long = (input.maxLength ?? 1000) > 200;

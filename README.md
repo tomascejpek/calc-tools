@@ -66,6 +66,9 @@ cider alongside; other fields will follow.
 | Engineering – air | humidity (relative ⇄ absolute, dew point), heating and cooling power for a room |
 | Engineering – electrical installation | three-phase power and power factor, power factor correction, circuit breaker size |
 | Weather and environment | wind chill, heat index, sea-level pressure, altitude from pressure and the boiling point of water, carbon footprint |
+| Time and date | days between dates, adding days or working days (Czech holidays), ISO week and day of the year, age, time zones, Julian date |
+| Transport | average speed, pace (min/km ⇄ km/h), trip cost, stopping distance |
+| Sport | race time prediction (Riegel), heart rate zones (Karvonen) |
 
 Every tool lists the sources of its formulas in `references`.
 
@@ -172,6 +175,7 @@ export default {
     { id: 'hops', type: 'list', label, min: 1, max: 10, fields: [/* inputs */] },
     { id: 'data', type: 'text', label, default: '1 2 3', maxLength: 1000, pattern: /^[0-9 ]+$/, hint: { cs, en } },
     { id: 'p', type: 'number', label, optional: true, default: 0.95 },
+    { id: 'from', type: 'date', label, default: '2026-01-01' }, // YYYY-MM-DD or D. M. YYYY
   ],
   outputs: [
     { id: 'abv', label, unit: { cs: '% obj.', en: '% ABV' }, precision: 1 }, // or a plain string such as 'SG'
@@ -239,8 +243,8 @@ MIT
 
 Knihovna kalkulaček a převodů jednotek: převody veličin SI i dalších
 jednotek, matematika, finanční matematika, fyzika, chemie, potraviny
-a výživa, technika a stavebnictví, meteorologie a životní prostředí
-a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
+a výživa, technika a stavebnictví, meteorologie a životní prostředí, čas
+a datum, doprava, sport a nástroje pro pivovarníky, vinaře, pálenkáře a výrobce medoviny
 a cideru. Nástroje
 jsou popsané daty a čistými funkcemi; stránka z popisu sama vytvoří formulář.
 Do Djanga se instaluje přes pip (viz výše) a moduly se načtou jako statické
